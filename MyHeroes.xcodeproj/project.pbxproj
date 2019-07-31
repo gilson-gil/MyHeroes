@@ -10,6 +10,23 @@
 		2B2FEDBB22F1350600810BD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDBA22F1350600810BD5 /* Constants.swift */; };
 		2B2FEDBE22F1356300810BD5 /* CharactersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDBD22F1356300810BD5 /* CharactersRequest.swift */; };
 		2B2FEDC222F1369800810BD5 /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDC122F1369800810BD5 /* String+md5.swift */; };
+		2B2FEDC722F13A1D00810BD5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDC622F13A1D00810BD5 /* ListViewController.swift */; };
+		2B2FEDC922F13A3A00810BD5 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDC822F13A3A00810BD5 /* ListInteractor.swift */; };
+		2B2FEDCB22F13A4300810BD5 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDCA22F13A4300810BD5 /* ListPresenter.swift */; };
+		2B2FEDCD22F14AD000810BD5 /* ListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDCC22F14AD000810BD5 /* ListRouter.swift */; };
+		2B2FEDCF22F14AF200810BD5 /* ListContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDCE22F14AF200810BD5 /* ListContract.swift */; };
+		2B2FEDD222F14C2400810BD5 /* HeroesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDD122F14C2400810BD5 /* HeroesRepository.swift */; };
+		2B2FEDD422F14CA800810BD5 /* HeroesRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDD322F14CA800810BD5 /* HeroesRemoteRepository.swift */; };
+		2B2FEDD722F1529000810BD5 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDD622F1529000810BD5 /* RootRouter.swift */; };
+		2B2FEDD922F152A100810BD5 /* RootContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDD822F152A100810BD5 /* RootContract.swift */; };
+		2B2FEDDC22F1548400810BD5 /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDDB22F1548400810BD5 /* ViewCodable.swift */; };
+		2B2FEDDE22F15C5600810BD5 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDDD22F15C5600810BD5 /* ListViewModel.swift */; };
+		2B2FEDE022F15CB300810BD5 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDDF22F15CB300810BD5 /* ConfigurableView.swift */; };
+		2B2FEDE222F15CD200810BD5 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDE122F15CD200810BD5 /* ReusableView.swift */; };
+		2B2FEDE422F15D5600810BD5 /* UITableViewCell+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDE322F15D5600810BD5 /* UITableViewCell+ReusableView.swift */; };
+		2B2FEDE622F15FB500810BD5 /* UITableView+ViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDE522F15FB500810BD5 /* UITableView+ViewConfigurator.swift */; };
+		2B2FEDE822F1687100810BD5 /* ListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDE722F1687100810BD5 /* ListItemViewModel.swift */; };
+		2B2FEDEA22F168E500810BD5 /* ListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDE922F168E500810BD5 /* ListItemCell.swift */; };
 		46681AB222F0F5520080A483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46681AB122F0F5520080A483 /* AppDelegate.swift */; };
 		46681AB922F0F5560080A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46681AB822F0F5560080A483 /* Assets.xcassets */; };
 		46681ABC22F0F5560080A483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46681ABA22F0F5560080A483 /* LaunchScreen.storyboard */; };
@@ -33,6 +50,23 @@
 		2B2FEDBA22F1350600810BD5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2B2FEDBD22F1356300810BD5 /* CharactersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRequest.swift; sourceTree = "<group>"; };
 		2B2FEDC122F1369800810BD5 /* String+md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
+		2B2FEDC622F13A1D00810BD5 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		2B2FEDC822F13A3A00810BD5 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		2B2FEDCA22F13A4300810BD5 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		2B2FEDCC22F14AD000810BD5 /* ListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRouter.swift; sourceTree = "<group>"; };
+		2B2FEDCE22F14AF200810BD5 /* ListContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContract.swift; sourceTree = "<group>"; };
+		2B2FEDD122F14C2400810BD5 /* HeroesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesRepository.swift; sourceTree = "<group>"; };
+		2B2FEDD322F14CA800810BD5 /* HeroesRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesRemoteRepository.swift; sourceTree = "<group>"; };
+		2B2FEDD622F1529000810BD5 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		2B2FEDD822F152A100810BD5 /* RootContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootContract.swift; sourceTree = "<group>"; };
+		2B2FEDDB22F1548400810BD5 /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
+		2B2FEDDD22F15C5600810BD5 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		2B2FEDDF22F15CB300810BD5 /* ConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
+		2B2FEDE122F15CD200810BD5 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		2B2FEDE322F15D5600810BD5 /* UITableViewCell+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReusableView.swift"; sourceTree = "<group>"; };
+		2B2FEDE522F15FB500810BD5 /* UITableView+ViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ViewConfigurator.swift"; sourceTree = "<group>"; };
+		2B2FEDE722F1687100810BD5 /* ListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemViewModel.swift; sourceTree = "<group>"; };
+		2B2FEDE922F168E500810BD5 /* ListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCell.swift; sourceTree = "<group>"; };
 		46681AAE22F0F5520080A483 /* MyHeroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHeroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46681AB122F0F5520080A483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46681AB822F0F5560080A483 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,8 +114,62 @@
 			isa = PBXGroup;
 			children = (
 				2B2FEDC122F1369800810BD5 /* String+md5.swift */,
+				2B2FEDE322F15D5600810BD5 /* UITableViewCell+ReusableView.swift */,
+				2B2FEDE522F15FB500810BD5 /* UITableView+ViewConfigurator.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2B2FEDC422F139CE00810BD5 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				2B2FEDD522F1528200810BD5 /* Root */,
+				2B2FEDC522F139DA00810BD5 /* List */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		2B2FEDC522F139DA00810BD5 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				2B2FEDCE22F14AF200810BD5 /* ListContract.swift */,
+				2B2FEDC822F13A3A00810BD5 /* ListInteractor.swift */,
+				2B2FEDCA22F13A4300810BD5 /* ListPresenter.swift */,
+				2B2FEDDD22F15C5600810BD5 /* ListViewModel.swift */,
+				2B2FEDE722F1687100810BD5 /* ListItemViewModel.swift */,
+				2B2FEDCC22F14AD000810BD5 /* ListRouter.swift */,
+				2B2FEDC622F13A1D00810BD5 /* ListViewController.swift */,
+				2B2FEDE922F168E500810BD5 /* ListItemCell.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		2B2FEDD022F14C1300810BD5 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				2B2FEDD122F14C2400810BD5 /* HeroesRepository.swift */,
+				2B2FEDD322F14CA800810BD5 /* HeroesRemoteRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		2B2FEDD522F1528200810BD5 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				2B2FEDD822F152A100810BD5 /* RootContract.swift */,
+				2B2FEDD622F1529000810BD5 /* RootRouter.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		2B2FEDDA22F1547200810BD5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2B2FEDDB22F1548400810BD5 /* ViewCodable.swift */,
+				2B2FEDDF22F15CB300810BD5 /* ConfigurableView.swift */,
+				2B2FEDE122F15CD200810BD5 /* ReusableView.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		46681AA522F0F5520080A483 = {
@@ -106,7 +194,9 @@
 			isa = PBXGroup;
 			children = (
 				46681AC322F0F5680080A483 /* Application */,
+				2B2FEDC422F139CE00810BD5 /* Modules */,
 				46681AE522F118E80080A483 /* Data */,
+				2B2FEDDA22F1547200810BD5 /* Protocols */,
 				2B2FEDC022F1368E00810BD5 /* Extensions */,
 				46681AC422F0F59B0080A483 /* Resources */,
 			);
@@ -185,6 +275,7 @@
 		46681AE522F118E80080A483 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				2B2FEDD022F14C1300810BD5 /* Repositories */,
 				46681AD822F113F30080A483 /* Entities */,
 				46681AC822F0F8E00080A483 /* Network */,
 				2B2FEDBC22F1354D00810BD5 /* Request */,
@@ -326,20 +417,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				46681ADA22F114000080A483 /* Character.swift in Sources */,
+				2B2FEDD922F152A100810BD5 /* RootContract.swift in Sources */,
+				2B2FEDDE22F15C5600810BD5 /* ListViewModel.swift in Sources */,
+				2B2FEDD722F1529000810BD5 /* RootRouter.swift in Sources */,
+				2B2FEDD422F14CA800810BD5 /* HeroesRemoteRepository.swift in Sources */,
+				2B2FEDCF22F14AF200810BD5 /* ListContract.swift in Sources */,
 				46681ACA22F0FEB10080A483 /* Method.swift in Sources */,
 				46681AD022F1068F0080A483 /* RequestFactory.swift in Sources */,
 				46681ACE22F105FB0080A483 /* NetworkError.swift in Sources */,
 				46681AE022F114920080A483 /* Event.swift in Sources */,
 				2B2FEDBB22F1350600810BD5 /* Constants.swift in Sources */,
+				2B2FEDC922F13A3A00810BD5 /* ListInteractor.swift in Sources */,
+				2B2FEDDC22F1548400810BD5 /* ViewCodable.swift in Sources */,
 				46681AB222F0F5520080A483 /* AppDelegate.swift in Sources */,
 				46681AE422F115960080A483 /* Series.swift in Sources */,
 				46681AE222F1157B0080A483 /* Creator.swift in Sources */,
+				2B2FEDEA22F168E500810BD5 /* ListItemCell.swift in Sources */,
+				2B2FEDE822F1687100810BD5 /* ListItemViewModel.swift in Sources */,
+				2B2FEDE022F15CB300810BD5 /* ConfigurableView.swift in Sources */,
+				2B2FEDCB22F13A4300810BD5 /* ListPresenter.swift in Sources */,
+				2B2FEDE422F15D5600810BD5 /* UITableViewCell+ReusableView.swift in Sources */,
+				2B2FEDE622F15FB500810BD5 /* UITableView+ViewConfigurator.swift in Sources */,
 				46681ACC22F101360080A483 /* Parameters.swift in Sources */,
 				46681AD722F1118A0080A483 /* HeroesService.swift in Sources */,
 				2B2FEDBE22F1356300810BD5 /* CharactersRequest.swift in Sources */,
+				2B2FEDE222F15CD200810BD5 /* ReusableView.swift in Sources */,
 				2B2FEDC222F1369800810BD5 /* String+md5.swift in Sources */,
+				2B2FEDCD22F14AD000810BD5 /* ListRouter.swift in Sources */,
 				46681ADC22F114880080A483 /* Comic.swift in Sources */,
+				2B2FEDC722F13A1D00810BD5 /* ListViewController.swift in Sources */,
 				46681AD222F106CC0080A483 /* Service.swift in Sources */,
+				2B2FEDD222F14C2400810BD5 /* HeroesRepository.swift in Sources */,
 				46681AD422F106F50080A483 /* Engine.swift in Sources */,
 				46681ADE22F1148D0080A483 /* Story.swift in Sources */,
 			);
