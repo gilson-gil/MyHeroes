@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B2FEDBB22F1350600810BD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDBA22F1350600810BD5 /* Constants.swift */; };
+		2B2FEDBE22F1356300810BD5 /* CharactersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDBD22F1356300810BD5 /* CharactersRequest.swift */; };
+		2B2FEDC222F1369800810BD5 /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDC122F1369800810BD5 /* String+md5.swift */; };
 		46681AB222F0F5520080A483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46681AB122F0F5520080A483 /* AppDelegate.swift */; };
 		46681AB922F0F5560080A483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46681AB822F0F5560080A483 /* Assets.xcassets */; };
 		46681ABC22F0F5560080A483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46681ABA22F0F5560080A483 /* LaunchScreen.storyboard */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B2FEDBA22F1350600810BD5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2B2FEDBD22F1356300810BD5 /* CharactersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRequest.swift; sourceTree = "<group>"; };
+		2B2FEDC122F1369800810BD5 /* String+md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
 		46681AAE22F0F5520080A483 /* MyHeroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHeroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46681AB122F0F5520080A483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46681AB822F0F5560080A483 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +68,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B2FEDBC22F1354D00810BD5 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				2B2FEDBD22F1356300810BD5 /* CharactersRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		2B2FEDC022F1368E00810BD5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2B2FEDC122F1369800810BD5 /* String+md5.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		46681AA522F0F5520080A483 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +107,7 @@
 			children = (
 				46681AC322F0F5680080A483 /* Application */,
 				46681AE522F118E80080A483 /* Data */,
+				2B2FEDC022F1368E00810BD5 /* Extensions */,
 				46681AC422F0F59B0080A483 /* Resources */,
 			);
 			path = MyHeroes;
@@ -94,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				46681AB122F0F5520080A483 /* AppDelegate.swift */,
+				2B2FEDBA22F1350600810BD5 /* Constants.swift */,
 				46681ABD22F0F5560080A483 /* Info.plist */,
 			);
 			path = Application;
@@ -150,10 +174,10 @@
 			children = (
 				46681AD922F114000080A483 /* Character.swift */,
 				46681ADB22F114880080A483 /* Comic.swift */,
-				46681ADD22F1148D0080A483 /* Story.swift */,
-				46681ADF22F114920080A483 /* Event.swift */,
 				46681AE122F1157B0080A483 /* Creator.swift */,
+				46681ADF22F114920080A483 /* Event.swift */,
 				46681AE322F115960080A483 /* Series.swift */,
+				46681ADD22F1148D0080A483 /* Story.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -163,6 +187,7 @@
 			children = (
 				46681AD822F113F30080A483 /* Entities */,
 				46681AC822F0F8E00080A483 /* Network */,
+				2B2FEDBC22F1354D00810BD5 /* Request */,
 				46681AD522F111200080A483 /* Services */,
 			);
 			path = Data;
@@ -305,11 +330,14 @@
 				46681AD022F1068F0080A483 /* RequestFactory.swift in Sources */,
 				46681ACE22F105FB0080A483 /* NetworkError.swift in Sources */,
 				46681AE022F114920080A483 /* Event.swift in Sources */,
+				2B2FEDBB22F1350600810BD5 /* Constants.swift in Sources */,
 				46681AB222F0F5520080A483 /* AppDelegate.swift in Sources */,
 				46681AE422F115960080A483 /* Series.swift in Sources */,
 				46681AE222F1157B0080A483 /* Creator.swift in Sources */,
 				46681ACC22F101360080A483 /* Parameters.swift in Sources */,
 				46681AD722F1118A0080A483 /* HeroesService.swift in Sources */,
+				2B2FEDBE22F1356300810BD5 /* CharactersRequest.swift in Sources */,
+				2B2FEDC222F1369800810BD5 /* String+md5.swift in Sources */,
 				46681ADC22F114880080A483 /* Comic.swift in Sources */,
 				46681AD222F106CC0080A483 /* Service.swift in Sources */,
 				46681AD422F106F50080A483 /* Engine.swift in Sources */,

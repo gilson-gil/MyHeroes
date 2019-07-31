@@ -19,9 +19,9 @@ final class NetworkEngine<Target: Service> {
         let requestResult = RequestFactory().create(target: target)
         guard let request = validate(requestResult: requestResult, completion: completion) else { return }
 
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            self.debug(request: request, response: response, error: error)
-            guard self.handleError(error, completion: completion) else { return }
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            self?.debug(request: request, response: response, error: error)
+            guard self?.handleError(error, completion: completion) == true else { return }
 
             guard let data = data else { return completion(.success(nil)) }
             do {
@@ -30,20 +30,6 @@ final class NetworkEngine<Target: Service> {
             } catch {
                 completion(.failure(.invalidJSON))
             }
-        }
-        task.resume()
-        tasks.append(task)
-    }
-
-    func requestData(target: Target, completion: @escaping(Result<Data, NetworkError>) -> Void) {
-        let requestResult = RequestFactory().create(target: target)
-        guard let request = validate(requestResult: requestResult, completion: completion) else { return }
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            self.debug(request: request, response: response, error: error)
-            guard self.handleError(error, completion: completion) else { return }
-
-            completion(.success(data ?? Data()))
         }
         task.resume()
         tasks.append(task)
