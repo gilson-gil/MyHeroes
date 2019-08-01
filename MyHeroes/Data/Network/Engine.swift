@@ -28,8 +28,24 @@ final class NetworkEngine<Target: Service> {
                 let result = try decoder.decode(T.self, from: data)
                 completion(.success(result))
             } catch {
+                print(error)
                 completion(.failure(.invalidJSON))
             }
+        }
+        task.resume()
+        tasks.append(task)
+    }
+
+    func requestData(target: Target,
+                     completion: @escaping(Result<Data, NetworkError>) -> Void) {
+        let requestResult = RequestFactory().create(target: target)
+        guard let request = validate(requestResult: requestResult, completion: completion) else { return }
+
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            self?.debug(request: request, response: response, error: error)
+            guard self?.handleError(error, completion: completion) == true else { return }
+
+            completion(.success(data ?? Data()))
         }
         task.resume()
         tasks.append(task)

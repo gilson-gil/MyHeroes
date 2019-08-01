@@ -18,6 +18,10 @@ final class ListPresenter: ListPresentation {
         self.router = router
     }
 
+    func viewWillAppear() {
+        interactor.fetchCharacters()
+    }
+
     func didSelectCharacter(_ character: Character) {
         router.presentDetails(for: character)
     }
@@ -29,6 +33,6 @@ extension ListPresenter: ListInteractorOutput {
     }
 
     func charactersFetchFailed(error: Error) {
-
+        print(error)
     }
 }

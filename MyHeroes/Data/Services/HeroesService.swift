@@ -13,8 +13,8 @@ enum HeroesService {
 }
 
 extension HeroesService: Service {
-    var baseURL: URL {
-        return URL(string: "https://gateway.marvel.com")!
+    var baseURL: URL? {
+        return URL(string: "https://gateway.marvel.com")
     }
 
     var path: String {
@@ -22,6 +22,10 @@ extension HeroesService: Service {
         case .list:
             return "/v1/public/characters"
         }
+    }
+
+    var absoluteURL: URL? {
+        return baseURL?.appendingPathComponent(path)
     }
 
     var method: Method {

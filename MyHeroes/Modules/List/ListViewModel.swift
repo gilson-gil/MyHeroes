@@ -13,7 +13,8 @@ final class ListViewModel {
     var characters: [Character] = [] {
         didSet {
             configurators = characters.map {
-                ViewConfigurator<ListItemCell>(viewModel: ListItemViewModel(title: $0.name, imageUrl: $0.thumbnailUrl))
+                ViewConfigurator<ListItemCell>(viewModel: ListItemViewModel(title: $0.name,
+                                                                            imageUrl: $0.thumbnail.fullUrl))
             }
         }
     }

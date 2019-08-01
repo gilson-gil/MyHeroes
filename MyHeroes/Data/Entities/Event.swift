@@ -16,9 +16,9 @@ struct Event: Decodable {
     let modified: Date
     let start: Date
     let end: Date
-    let thumbnailUrl: String
-    let characters: [Character]
-    let creators: [Creator]
+    let thumbnail: Image
+    let characters: ListResponse
+    let creators: ListResponse
 
     enum CodingKeys: String, CodingKey {
         case identifier = "id"
@@ -28,7 +28,7 @@ struct Event: Decodable {
         case modified
         case start
         case end
-        case thumbnailUrl = "thumbnail"
+        case thumbnail
         case characters
         case creators
     }

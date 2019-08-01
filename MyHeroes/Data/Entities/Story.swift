@@ -15,9 +15,9 @@ struct Story: Decodable {
     let resourceURI: String
     let type: String
     let modified: Date
-    let thumbnailUrl: String
-    let characters: [Character]
-    let creators: [Creator]
+    let thumbnail: Image
+    let characters: ListResponse
+    let creators: ListResponse
 
     enum CodingKeys: String, CodingKey {
         case identifier = "id"
@@ -26,7 +26,7 @@ struct Story: Decodable {
         case resourceURI
         case type
         case modified
-        case thumbnailUrl = "thumbnail"
+        case thumbnail
         case characters
         case creators
     }

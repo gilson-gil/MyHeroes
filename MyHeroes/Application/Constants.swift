@@ -9,6 +9,6 @@
 import Foundation
 
 enum Constants: String {
-    case marvelPublicKey = "1990bf4f6738c4730c3ec38e990a44e1"
-    case marvelPrivateKey = "524b560b2c2fd2b611c178aa367ea9a2d3c66679"
+    case marvelPublicKey = "75060678488a84875f90bc59ae9828d6"
+    case marvelPrivateKey = "b221fb25fa5fbffa78f57e234181f36c044b0b12"
 }

@@ -12,16 +12,17 @@ struct HeroesRemoteRepository: HeroesRepository {
     let engine: NetworkEngine<HeroesService> = .init()
     let pageSize: Int = 20
 
-    func fetchList(at page: Int, completion: @escaping (Result<[Character], Error>) -> Void) {
+    func fetchList(at page: Int, completion: @escaping (Result<HeroesResponse<Character>, Error>) -> Void) {
         let decoder: JSONDecoder = .init()
+        decoder.dateDecodingStrategy = .iso8601
         let target: HeroesService = .list(pageSize: pageSize, page: page)
-        engine.request(target: target, decoder: decoder) { (result: Result<[Character]?, NetworkError>) in
+        engine.request(target: target, decoder: decoder) { (result: Result<HeroesResponse<Character>?, NetworkError>) in
             switch result {
             case .success(let response):
-                guard let nonEmpty = response else {
+                guard let response = response, response.data.count > 0 else {
                     return completion(.failure(HeroesRepositoryError.endReached))
                 }
-                completion(.success(nonEmpty))
+                completion(.success(response))
             case .failure(let error):
                 completion(.failure(error))
             }

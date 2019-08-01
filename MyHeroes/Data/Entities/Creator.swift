@@ -17,7 +17,7 @@ struct Creator: Decodable {
     let fullName: String
     let modified: Date
     let resourceURI: String
-    let thumbnailUrl: String
+    let thumbnail: Image
 
     enum CodingKeys: String, CodingKey {
         case identifier = "id"
@@ -28,6 +28,6 @@ struct Creator: Decodable {
         case fullName
         case modified
         case resourceURI
-        case thumbnailUrl = "thumbnail"
+        case thumbnail
     }
 }

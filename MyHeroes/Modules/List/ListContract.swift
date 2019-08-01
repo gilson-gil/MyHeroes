@@ -20,6 +20,7 @@ protocol ListPresentation: class {
     var interactor: ListUseCase { get set }
     var router: ListWireframe { get set }
 
+    func viewWillAppear()
     func didSelectCharacter(_ character: Character)
 }
 

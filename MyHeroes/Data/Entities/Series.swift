@@ -17,7 +17,7 @@ struct Series: Decodable {
     let endYear: Int
     let rating: String
     let modified: Date
-    let thumbnailUrl: String
-    let characters: [Character]
-    let creators: [Creator]
+    let thumbnail: Image
+    let characters: ListResponse
+    let creators: ListResponse
 }

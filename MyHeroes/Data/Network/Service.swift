@@ -9,8 +9,9 @@
 import Foundation
 
 protocol Service {
-    var baseURL: URL { get }
+    var baseURL: URL? { get }
     var path: String { get }
+    var absoluteURL: URL? { get }
     var method: Method { get }
     var parameters: Parameters? { get }
 }

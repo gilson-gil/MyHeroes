@@ -16,10 +16,10 @@ struct Comic: Decodable {
     let format: String
     let pageCount: Int
     let resourceURI: String
-    let thumbnailUrl: String
-    let images: [String]
-    let creators: [Creator]
-    let characters: [Character]
+    let thumbnail: Image
+    let images: [Image]
+    let creators: ListResponse
+    let characters: ListResponse
 
     enum CodingKeys: String, CodingKey {
         case identifier = "id"
@@ -29,7 +29,7 @@ struct Comic: Decodable {
         case format
         case pageCount
         case resourceURI
-        case thumbnailUrl = "thumbnail"
+        case thumbnail
         case images
         case creators
         case characters

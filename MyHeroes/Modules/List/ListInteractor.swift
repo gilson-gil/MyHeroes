@@ -11,21 +11,28 @@ import Foundation
 final class ListInteractor: ListUseCase {
     weak var output: ListInteractorOutput?
     let repository: HeroesRepository
-    var viewModel: ListViewModel = .init()
+    var data: DataResponse<Character>?
 
     init(repository: HeroesRepository) {
         self.repository = repository
     }
 
     func fetchCharacters() {
-        repository.fetchList(at: viewModel.characters.count) { [weak viewModel, output] result in
+        repository.fetchList(at: data?.results.count ?? 0) { [weak self] result in
             switch result {
-            case .success(let characters):
-                guard let viewModel = viewModel else { return }
-                viewModel.characters += characters
-                output?.charactersFetched(viewModel)
+            case .success(let response):
+                response.data.results = (self?.data?.results ?? []) + response.data.results
+                self?.data = response.data
+                let viewModel: ListViewModel = .init()
+                viewModel.characters = response.data.results
+                self?.output?.charactersFetched(viewModel)
             case .failure(let error):
-                output?.charactersFetchFailed(error: error)
+                switch error {
+                case HeroesRepositoryError.endReached:
+                    break
+                default:
+                    self?.output?.charactersFetchFailed(error: error)
+                }
             }
         }
     }

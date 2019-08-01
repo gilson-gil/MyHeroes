@@ -16,16 +16,25 @@ protocol ConfigurableView: class {
 
 protocol ViewConfiguratorType {
     var viewClass: AnyClass { get }
+    var reuseIdentifier: String { get }
 
-    func update<T: ConfigurableView>(_ view: T)
+    func getViewClass() -> AnyClass
+    func update<T: ReusableView>(_ view: T)
     func register(_ tableView: UITableView?)
+}
+
+extension ViewConfiguratorType {
+    func getViewClass() -> AnyClass {
+        return viewClass
+    }
 }
 
 struct ViewConfigurator<View> where View: ConfigurableView & ReusableView {
     let viewModel: View.ViewModel
     let viewClass: AnyClass = View.self
+    var reuseIdentifier: String { return View.reuseIdentifier }
 
-    func update<T: ConfigurableView>(_ view: T) {
+    func update<T: ReusableView>(_ view: T) {
         guard let view = view as? View else { return }
         view.update(viewModel)
     }

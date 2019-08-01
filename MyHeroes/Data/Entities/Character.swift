@@ -14,11 +14,11 @@ struct Character: Decodable {
     let description: String
     let modified: Date
     let resourceURI: String
-    let thumbnailUrl: String
-    let comics: [Comic]
-    let stories: [Story]
-    let events: [Event]
-    let series: [Series]
+    let thumbnail: Image
+    let comics: ListResponse
+    let stories: ListResponse
+    let events: ListResponse
+    let series: ListResponse
 
     enum CodingKeys: String, CodingKey {
         case identifier = "id"
@@ -26,7 +26,7 @@ struct Character: Decodable {
         case description
         case modified
         case resourceURI
-        case thumbnailUrl = "thumbnail"
+        case thumbnail
         case comics
         case stories
         case events

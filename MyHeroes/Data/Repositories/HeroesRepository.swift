@@ -13,5 +13,5 @@ enum HeroesRepositoryError: Error {
 }
 
 protocol HeroesRepository {
-    func fetchList(at page: Int, completion: @escaping (Result<[Character], Error>) -> Void)
+    func fetchList(at page: Int, completion: @escaping (Result<HeroesResponse<Character>, Error>) -> Void)
 }
