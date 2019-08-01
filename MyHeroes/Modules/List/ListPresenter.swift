@@ -28,7 +28,9 @@ final class ListPresenter: ListPresentation {
 }
 
 extension ListPresenter: ListInteractorOutput {
-    func charactersFetched(_ viewModel: ListViewModel) {
+    func charactersFetched(_ dataResponse: DataResponse<Character>) {
+        let viewModel: ListViewModel = .init()
+        viewModel.characters = dataResponse.results
         view?.showListCharacters(viewModel)
     }
 

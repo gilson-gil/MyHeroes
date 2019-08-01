@@ -58,7 +58,7 @@ extension ListItemCell: ViewCodable {
 
 extension ListItemCell: ConfigurableView {
     func update(_ viewModel: ListItemViewModel) {
-        itemImageView.downloader.downloadImage(for: viewModel.imageUrl) {}
+        itemImageView.downloader.fetchImage(for: viewModel.imageUrl) {}
         titleLabel.text = viewModel.title
     }
 }

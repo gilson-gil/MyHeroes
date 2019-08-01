@@ -23,9 +23,7 @@ final class ListInteractor: ListUseCase {
             case .success(let response):
                 response.data.results = (self?.data?.results ?? []) + response.data.results
                 self?.data = response.data
-                let viewModel: ListViewModel = .init()
-                viewModel.characters = response.data.results
-                self?.output?.charactersFetched(viewModel)
+                self?.output?.charactersFetched(response.data)
             case .failure(let error):
                 switch error {
                 case HeroesRepositoryError.endReached:

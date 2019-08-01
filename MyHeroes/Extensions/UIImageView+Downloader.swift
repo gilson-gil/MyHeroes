@@ -10,18 +10,35 @@ import UIKit
 
 struct Downloader {
     weak var imageView: UIImageView?
-    let repository: ImageRepository
+    let remoteRepository: ImageRemoteRepository
 
-    init(imageView: UIImageView, repository: ImageRepository = ImageRemoteRepository()) {
+    init(imageView: UIImageView,
+         remoteRepository: ImageRemoteRepository = ImageRemoteRepository()) {
         self.imageView = imageView
-        self.repository = repository
+        self.remoteRepository = remoteRepository
     }
 
-    func downloadImage(for url: String, completion: @escaping () -> Void) {
-        repository.fetchImage(for: url) { result in
+    func setImage(_ image: UIImage?) {
+        DispatchQueue.main.async {
+            self.imageView?.image = image
+        }
+    }
+
+    func fetchImage(for urlString: String, completion: @escaping () -> Void) {
+        CacheManager.shared.image(from: urlString) { result in
+            guard let image = result?.1 else {
+                return self.downloadImage(for: urlString, completion: completion)
+            }
+            self.setImage(image)
+        }
+    }
+
+    func downloadImage(for urlString: String, completion: @escaping () -> Void) {
+        remoteRepository.fetchImage(for: urlString) { result in
             guard case let .success(image) = result else { return }
-            DispatchQueue.main.async {
-                self.imageView?.image = image
+            self.setImage(image)
+            if let image = image {
+                CacheManager.shared.cache(image: image, for: urlString)
             }
         }
     }

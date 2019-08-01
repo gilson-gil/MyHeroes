@@ -31,7 +31,7 @@ protocol ListUseCase: class {
 }
 
 protocol ListInteractorOutput: class {
-    func charactersFetched(_ viewModel: ListViewModel)
+    func charactersFetched(_ dataResponse: DataResponse<Character>)
     func charactersFetchFailed(error: Error)
 }
 
