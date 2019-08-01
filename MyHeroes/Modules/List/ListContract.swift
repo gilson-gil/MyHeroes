@@ -13,6 +13,8 @@ protocol ListView: class {
 
     func showNoContentScreen()
     func showListCharacters(_ viewModel: ListViewModel)
+    func showPaginationLoading()
+    func hidePaginationLoading()
 }
 
 protocol ListPresentation: class {
@@ -21,6 +23,7 @@ protocol ListPresentation: class {
     var router: ListWireframe { get set }
 
     func viewWillAppear()
+    func requestNextPage()
     func didSelectCharacter(_ character: Character)
 }
 
@@ -31,6 +34,7 @@ protocol ListUseCase: class {
 }
 
 protocol ListInteractorOutput: class {
+    func charactersFetchStarted()
     func charactersFetched(_ dataResponse: DataResponse<Character>)
     func charactersFetchFailed(error: Error)
 }

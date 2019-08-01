@@ -9,7 +9,7 @@
 import Foundation
 
 enum HeroesService {
-    case list(pageSize: Int, page: Int)
+    case list(pageSize: Int, offset: Int)
 }
 
 extension HeroesService: Service {
@@ -34,8 +34,8 @@ extension HeroesService: Service {
 
     var parameters: Parameters? {
         switch self {
-        case .list(let pageSize, let page):
-            return CharactersRequest(offset: page * pageSize, limit: pageSize, timestamp: UUID().uuidString).parameters
+        case .list(let pageSize, let offset):
+            return CharactersRequest(offset: offset, limit: pageSize, timestamp: UUID().uuidString).parameters
         }
     }
 }

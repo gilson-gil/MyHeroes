@@ -22,19 +22,30 @@ final class ListPresenter: ListPresentation {
         interactor.fetchCharacters()
     }
 
+    func requestNextPage() {
+        interactor.fetchCharacters()
+    }
+
     func didSelectCharacter(_ character: Character) {
         router.presentDetails(for: character)
     }
 }
 
 extension ListPresenter: ListInteractorOutput {
+    func charactersFetchStarted() {
+        view?.showPaginationLoading()
+    }
+
     func charactersFetched(_ dataResponse: DataResponse<Character>) {
         let viewModel: ListViewModel = .init()
         viewModel.characters = dataResponse.results
+        viewModel.hasNextPage = dataResponse.results.count == dataResponse.count
         view?.showListCharacters(viewModel)
+        view?.hidePaginationLoading()
     }
 
     func charactersFetchFailed(error: Error) {
         print(error)
+        view?.hidePaginationLoading()
     }
 }

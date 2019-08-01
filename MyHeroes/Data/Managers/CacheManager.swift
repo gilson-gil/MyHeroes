@@ -14,7 +14,7 @@ final class CacheManager {
     private let cache = NSCache<NSString, UIImage>()
 
     func image(from urlString: String, completion: @escaping ((String, UIImage)?) -> Void) {
-        // memmory cache
+        // memory cache
         if let cached = cache.object(forKey: urlString as NSString) {
             return completion((urlString, cached))
         }
@@ -30,19 +30,19 @@ final class CacheManager {
 
     func cache(image: UIImage, for urlString: String) {
         cache.setObject(image, forKey: urlString as NSString)
-        if let data = image.pngData() {
+        if let data = image.jpegData(compressionQuality: 1) {
             createFile(urlString, contents: data)
         }
     }
 
-    func getFile(with urlString: String) -> Data? {
+    private func getFile(with urlString: String) -> Data? {
         let manager = FileManager.default
         let filename = urlString.components(separatedBy: "/").last ?? urlString
         let path = NSTemporaryDirectory().appending(filename)
         return manager.contents(atPath: path)
     }
 
-    func createFile(_ urlString: String, contents: Data) {
+    private func createFile(_ urlString: String, contents: Data) {
         let manager = FileManager.default
         let filename = urlString.components(separatedBy: "/").last ?? urlString
         let path = NSTemporaryDirectory().appending(filename)

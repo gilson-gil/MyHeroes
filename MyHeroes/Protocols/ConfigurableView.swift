@@ -21,6 +21,7 @@ protocol ViewConfiguratorType {
     func getViewClass() -> AnyClass
     func update<T: ReusableView>(_ view: T)
     func register(_ tableView: UITableView?)
+    func register(_ collectionView: UICollectionView?)
 }
 
 extension ViewConfiguratorType {
@@ -40,7 +41,15 @@ struct ViewConfigurator<View> where View: ConfigurableView & ReusableView {
     }
 
     func register(_ tableView: UITableView?) {
-        tableView?.register(viewClass, forCellReuseIdentifier: View.reuseIdentifier)
+        if viewClass.isSubclass(of: UITableViewCell.self) {
+            tableView?.register(viewClass, forCellReuseIdentifier: View.reuseIdentifier)
+        } else if viewClass.isSubclass(of: UITableViewHeaderFooterView.self) {
+            tableView?.register(viewClass, forHeaderFooterViewReuseIdentifier: View.reuseIdentifier)
+        }
+    }
+
+    func register(_ collectionView: UICollectionView?) {
+        collectionView?.register(viewClass, forCellWithReuseIdentifier: View.reuseIdentifier)
     }
 }
 

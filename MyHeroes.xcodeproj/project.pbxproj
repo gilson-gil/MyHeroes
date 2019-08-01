@@ -56,6 +56,10 @@
 		46681AE022F114920080A483 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46681ADF22F114920080A483 /* Event.swift */; };
 		46681AE222F1157B0080A483 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46681AE122F1157B0080A483 /* Creator.swift */; };
 		46681AE422F115960080A483 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46681AE322F115960080A483 /* Series.swift */; };
+		46B9A47622F385F300D7F423 /* UIActivityIndicatorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9A47522F385F300D7F423 /* UIActivityIndicatorBuilder.swift */; };
+		46B9A47822F3867B00D7F423 /* LoadingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9A47722F3867B00D7F423 /* LoadingFooter.swift */; };
+		46B9A47C22F397DB00D7F423 /* UITableViewHeaderFooterView+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9A47B22F397DB00D7F423 /* UITableViewHeaderFooterView+ReusableView.swift */; };
+		46B9A47E22F3AFB000D7F423 /* UICollectionView+ViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9A47D22F3AFB000D7F423 /* UICollectionView+ViewConfigurator.swift */; };
 		EE0614453BBAFFAECDD2A260 /* Pods_MyHeroes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7307216B479E3E3FB25D02FB /* Pods_MyHeroes.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +115,10 @@
 		46681ADF22F114920080A483 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		46681AE122F1157B0080A483 /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
 		46681AE322F115960080A483 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
+		46B9A47522F385F300D7F423 /* UIActivityIndicatorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIActivityIndicatorBuilder.swift; sourceTree = "<group>"; };
+		46B9A47722F3867B00D7F423 /* LoadingFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingFooter.swift; sourceTree = "<group>"; };
+		46B9A47B22F397DB00D7F423 /* UITableViewHeaderFooterView+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+ReusableView.swift"; sourceTree = "<group>"; };
+		46B9A47D22F3AFB000D7F423 /* UICollectionView+ViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ViewConfigurator.swift"; sourceTree = "<group>"; };
 		7307216B479E3E3FB25D02FB /* Pods_MyHeroes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyHeroes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		786007F994C1EC523508CEDD /* Pods-MyHeroes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHeroes.debug.xcconfig"; path = "Target Support Files/Pods-MyHeroes/Pods-MyHeroes.debug.xcconfig"; sourceTree = "<group>"; };
 		ADE2B7FF994D1E0B6A991B7A /* Pods-MyHeroes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHeroes.release.xcconfig"; path = "Target Support Files/Pods-MyHeroes/Pods-MyHeroes.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,7 +149,9 @@
 			children = (
 				2B2FEDC122F1369800810BD5 /* String+md5.swift */,
 				2B2FEDE322F15D5600810BD5 /* UITableViewCell+ReusableView.swift */,
+				46B9A47B22F397DB00D7F423 /* UITableViewHeaderFooterView+ReusableView.swift */,
 				2B2FEDE522F15FB500810BD5 /* UITableView+ViewConfigurator.swift */,
+				46B9A47D22F3AFB000D7F423 /* UICollectionView+ViewConfigurator.swift */,
 				462CE73022F2601F00B5411B /* UIImageView+Downloader.swift */,
 			);
 			path = Extensions;
@@ -150,6 +160,7 @@
 		2B2FEDC422F139CE00810BD5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				46B9A47422F385DF00D7F423 /* Shared */,
 				2B2FEDD522F1528200810BD5 /* Root */,
 				2B2FEDC522F139DA00810BD5 /* List */,
 			);
@@ -225,6 +236,7 @@
 			children = (
 				462CE72322F23F9700B5411B /* UILabelBuilder.swift */,
 				462CE72522F2414600B5411B /* UIImageViewBuilder.swift */,
+				46B9A47522F385F300D7F423 /* UIActivityIndicatorBuilder.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -353,6 +365,14 @@
 				46681AD522F111200080A483 /* Services */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		46B9A47422F385DF00D7F423 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				46B9A47722F3867B00D7F423 /* LoadingFooter.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		6D5BEDA9134BF0A32F397B98 /* Pods */ = {
@@ -491,6 +511,7 @@
 				2B2FEDD922F152A100810BD5 /* RootContract.swift in Sources */,
 				2B2FEDDE22F15C5600810BD5 /* ListViewModel.swift in Sources */,
 				2B2FEDD722F1529000810BD5 /* RootRouter.swift in Sources */,
+				46B9A47622F385F300D7F423 /* UIActivityIndicatorBuilder.swift in Sources */,
 				462CE71722F22FD100B5411B /* ListResponse.swift in Sources */,
 				2B2FEDD422F14CA800810BD5 /* HeroesRemoteRepository.swift in Sources */,
 				2B2FEDCF22F14AF200810BD5 /* ListContract.swift in Sources */,
@@ -502,6 +523,7 @@
 				46681AE022F114920080A483 /* Event.swift in Sources */,
 				2B2FEDBB22F1350600810BD5 /* Constants.swift in Sources */,
 				462CE72422F23F9700B5411B /* UILabelBuilder.swift in Sources */,
+				46B9A47822F3867B00D7F423 /* LoadingFooter.swift in Sources */,
 				2B2FEDC922F13A3A00810BD5 /* ListInteractor.swift in Sources */,
 				2B2FEDDC22F1548400810BD5 /* ViewCodable.swift in Sources */,
 				46681AB222F0F5520080A483 /* AppDelegate.swift in Sources */,
@@ -511,6 +533,7 @@
 				2B2FEDEA22F168E500810BD5 /* ListItemCell.swift in Sources */,
 				462CE72F22F25CEF00B5411B /* UrlService.swift in Sources */,
 				2B2FEDE822F1687100810BD5 /* ListItemViewModel.swift in Sources */,
+				46B9A47C22F397DB00D7F423 /* UITableViewHeaderFooterView+ReusableView.swift in Sources */,
 				2B2FEDE022F15CB300810BD5 /* ConfigurableView.swift in Sources */,
 				2B2FEDCB22F13A4300810BD5 /* ListPresenter.swift in Sources */,
 				2B2FEDE422F15D5600810BD5 /* UITableViewCell+ReusableView.swift in Sources */,
@@ -518,6 +541,7 @@
 				2B2FEDEF22F292F800810BD5 /* CacheManager.swift in Sources */,
 				46681ACC22F101360080A483 /* Parameters.swift in Sources */,
 				462CE72922F242BE00B5411B /* AutoLayoutWrapper.swift in Sources */,
+				46B9A47E22F3AFB000D7F423 /* UICollectionView+ViewConfigurator.swift in Sources */,
 				46681AD722F1118A0080A483 /* HeroesService.swift in Sources */,
 				2B2FEDBE22F1356300810BD5 /* CharactersRequest.swift in Sources */,
 				2B2FEDE222F15CD200810BD5 /* ReusableView.swift in Sources */,

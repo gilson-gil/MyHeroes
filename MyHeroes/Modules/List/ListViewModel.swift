@@ -9,7 +9,6 @@
 import Foundation
 
 final class ListViewModel {
-    var configurators: [ViewConfiguratorType] = []
     var characters: [Character] = [] {
         didSet {
             configurators = characters.map {
@@ -18,4 +17,7 @@ final class ListViewModel {
             }
         }
     }
+    var hasNextPage: Bool = false
+    var isLoadingNextPage: Bool = false
+    var configurators: [ViewConfiguratorType] = []
 }

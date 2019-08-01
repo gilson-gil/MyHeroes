@@ -8,7 +8,18 @@
 
 import UIKit
 
-final class ListItemCell: UITableViewCell {
+final class ListItemCell: UICollectionViewCell {
+    private(set) var containerView: UIView = {
+        let view: UIView = .init()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 20
+        view.layer.shadowColor = UIColor.white.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 1)
+        view.layer.shadowRadius = 1
+        view.layer.shadowOpacity = 0.5
+        return view
+    }()
+
     private(set) var itemImageView: UIImageView = {
         return UIImageViewBuilder()
             .setContentMode(.scaleAspectFit)
@@ -24,8 +35,8 @@ final class ListItemCell: UITableViewCell {
             .build()
     }()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViewCode()
     }
 
@@ -38,21 +49,22 @@ extension ListItemCell: ViewCodable {
     }
 
     func addSubviews() {
-        contentView.addSubview(itemImageView)
+        contentView.addSubview(containerView)
+        containerView.addSubview(itemImageView)
         contentView.addSubview(titleLabel)
     }
 
     func addConstraints() {
-        itemImageView.topAnchor >> contentView.topAnchor + 20
-        itemImageView.leftAnchor >> contentView.leftAnchor + 20
-        itemImageView.bottomAnchor >> contentView.bottomAnchor - 20
+        containerView.topAnchor ||= contentView.topAnchor ||+ 20
+        containerView.leftAnchor ||= contentView.leftAnchor ||+ 20
+        containerView.rightAnchor ||= contentView.rightAnchor ||+ 20
+        containerView.heightAnchor ||= 100 ||~ 750
 
-        itemImageView.widthAnchor >> 100
-        itemImageView.heightAnchor >> 100
+        itemImageView.autolayout.alignEdges(to: contentView)
 
-        titleLabel.leftAnchor >> itemImageView.rightAnchor + 20
-        titleLabel.rightAnchor >> contentView.rightAnchor - 20
-        titleLabel.centerYAnchor >> contentView.centerYAnchor
+        titleLabel.leftAnchor ||= contentView.leftAnchor ||+ 20
+        titleLabel.rightAnchor ||= contentView.rightAnchor ||- 20
+        titleLabel.bottomAnchor ||= contentView.bottomAnchor
     }
 }
 
