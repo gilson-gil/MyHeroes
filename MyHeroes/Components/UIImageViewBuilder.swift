@@ -9,10 +9,16 @@
 import UIKit
 
 final class UIImageViewBuilder {
-    var contentMode: UIImageView.ContentMode = .scaleAspectFit
+    private var contentMode: UIImageView.ContentMode = .scaleAspectFit
+    private var image: UIImage?
 
     func setContentMode(_ contentMode: UIImageView.ContentMode) -> Self {
         self.contentMode = contentMode
+        return self
+    }
+
+    func setImage(_ image: UIImage?) -> Self {
+        self.image = image
         return self
     }
 
@@ -20,6 +26,7 @@ final class UIImageViewBuilder {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = contentMode
+        imageView.image = image
         return imageView
     }
 }

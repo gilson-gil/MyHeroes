@@ -18,17 +18,8 @@ final class ListViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.register(view: LoadingCollectionViewCell.self)
         return collectionView
-    }()
-
-    private(set) lazy var loadingFooter: LoadingFooter = {
-        let width: CGFloat = collectionView.bounds.width
-        let height: CGFloat = 44 + view.safeAreaInsets.bottom
-        let size: CGSize = .init(width: width, height: height)
-        let frame: CGRect = .init(origin: .zero, size: size)
-        let footer: LoadingFooter = .init(frame: frame)
-        (footer.heightAnchor => height)=!
-        return footer
     }()
 
     init(presenter: ListPresentation) {
@@ -55,21 +46,32 @@ extension ListViewController: ListView {
 
     func showListCharacters(_ viewModel: ListViewModel) {
         DispatchQueue.main.async {
-            self.viewModel = viewModel
-            self.viewModel.configurators.forEach { $0.register(self.collectionView) }
-            self.collectionView.reloadData()
+            self.collectionView.performBatchUpdates({
+                let previousCount = self.viewModel.configurators.count
+                let newCount = viewModel.configurators.count
+                let range = previousCount..<newCount
+                let newIndexPaths = range.map { IndexPath(item: $0, section: 0) }
+                self.viewModel = viewModel
+                self.viewModel.configurators.forEach { $0.register(self.collectionView) }
+                self.collectionView.insertItems(at: newIndexPaths)
+                if self.collectionView.numberOfItems(inSection: 1) > 0 {
+                    self.collectionView.deleteItems(at: [IndexPath(item: 0, section: 1)])
+                }
+            }, completion: nil)
         }
     }
 
     func showPaginationLoading() {
         DispatchQueue.main.async {
-//            self.collectionView.tableFooterView = self.loadingFooter
+            self.viewModel.isLoadingNextPage = true
+            self.collectionView.reloadSections(.init(integer: 1))
         }
     }
 
     func hidePaginationLoading() {
         DispatchQueue.main.async {
-//            self.collectionView.tableFooterView = UIView()
+            self.viewModel.isLoadingNextPage = false
+            self.collectionView.reloadSections(.init(integer: 1))
         }
     }
 }
@@ -77,6 +79,10 @@ extension ListViewController: ListView {
 extension ListViewController: ViewCodable {
     func addSubviews() {
         view.addSubview(collectionView)
+        navigationItem.titleView = UIImageViewBuilder()
+            .setContentMode(.scaleAspectFit)
+            .setImage(#imageLiteral(resourceName: "img_logo"))
+            .build()
     }
 
     func addConstraints() {
@@ -86,17 +92,32 @@ extension ListViewController: ViewCodable {
 
 // MARK: - UICollectionView DataSource
 extension ListViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.configurators.count
+        if section == 0 {
+            return viewModel.configurators.count
+        } else {
+            return viewModel.isLoadingNextPage ? 1 : 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let configurator = viewModel.configurators[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: configurator.reuseIdentifier,
-                                                      for: indexPath)
-        configurator.update(cell)
-        return cell
+        if indexPath.section == 0 {
+            let configurator = viewModel.configurators[indexPath.row]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: configurator.reuseIdentifier,
+                                                          for: indexPath)
+            configurator.update(cell)
+            return cell
+        } else {
+            let configurator = ViewConfigurator<LoadingCollectionViewCell>(viewModel: nil)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: configurator.reuseIdentifier,
+                                                          for: indexPath)
+            configurator.update(cell)
+            return cell
+        }
     }
 }
 
@@ -106,7 +127,12 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = collectionView.bounds.width
-        let height: CGFloat = width
+        let height: CGFloat
+        if indexPath.section == 0 {
+            height = width
+        } else {
+            height = 44
+        }
         return .init(width: width, height: height)
     }
 
@@ -137,7 +163,7 @@ extension ListViewController: UITableViewDelegate {
 // MARK: - UIScrollView Delegate
 extension ListViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.bounds.height else { return }
+        guard scrollView.contentOffset.y > scrollView.contentSize.height - 2 * scrollView.bounds.height else { return }
         presenter.requestNextPage()
     }
 }

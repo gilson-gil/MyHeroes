@@ -61,6 +61,8 @@
 		46B9A47822F3867B00D7F423 /* LoadingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9A47722F3867B00D7F423 /* LoadingFooter.swift */; };
 		46B9A47C22F397DB00D7F423 /* UITableViewHeaderFooterView+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9A47B22F397DB00D7F423 /* UITableViewHeaderFooterView+ReusableView.swift */; };
 		46B9A47E22F3AFB000D7F423 /* UICollectionView+ViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9A47D22F3AFB000D7F423 /* UICollectionView+ViewConfigurator.swift */; };
+		46B9A48022F47A9700D7F423 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9A47F22F47A9700D7F423 /* LoadingCollectionViewCell.swift */; };
+		46B9A48222F490FB00D7F423 /* PaginatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9A48122F490FB00D7F423 /* PaginatorManager.swift */; };
 		EE0614453BBAFFAECDD2A260 /* Pods_MyHeroes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7307216B479E3E3FB25D02FB /* Pods_MyHeroes.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +123,8 @@
 		46B9A47722F3867B00D7F423 /* LoadingFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingFooter.swift; sourceTree = "<group>"; };
 		46B9A47B22F397DB00D7F423 /* UITableViewHeaderFooterView+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+ReusableView.swift"; sourceTree = "<group>"; };
 		46B9A47D22F3AFB000D7F423 /* UICollectionView+ViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ViewConfigurator.swift"; sourceTree = "<group>"; };
+		46B9A47F22F47A9700D7F423 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
+		46B9A48122F490FB00D7F423 /* PaginatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatorManager.swift; sourceTree = "<group>"; };
 		7307216B479E3E3FB25D02FB /* Pods_MyHeroes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyHeroes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		786007F994C1EC523508CEDD /* Pods-MyHeroes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHeroes.debug.xcconfig"; path = "Target Support Files/Pods-MyHeroes/Pods-MyHeroes.debug.xcconfig"; sourceTree = "<group>"; };
 		ADE2B7FF994D1E0B6A991B7A /* Pods-MyHeroes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHeroes.release.xcconfig"; path = "Target Support Files/Pods-MyHeroes/Pods-MyHeroes.release.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				2B2FEDEE22F292F800810BD5 /* CacheManager.swift */,
+				46B9A48122F490FB00D7F423 /* PaginatorManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				46B9A47722F3867B00D7F423 /* LoadingFooter.swift */,
+				46B9A47F22F47A9700D7F423 /* LoadingCollectionViewCell.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 				2B2FEDCF22F14AF200810BD5 /* ListContract.swift in Sources */,
 				462CE71B22F2341700B5411B /* DataResponse.swift in Sources */,
 				46681ACA22F0FEB10080A483 /* Method.swift in Sources */,
+				46B9A48022F47A9700D7F423 /* LoadingCollectionViewCell.swift in Sources */,
 				462CE72D22F25C9300B5411B /* ImageRemoteRepository.swift in Sources */,
 				46681AD022F1068F0080A483 /* RequestFactory.swift in Sources */,
 				46681ACE22F105FB0080A483 /* NetworkError.swift in Sources */,
@@ -534,6 +541,7 @@
 				46681AE422F115960080A483 /* Series.swift in Sources */,
 				46681AE222F1157B0080A483 /* Creator.swift in Sources */,
 				2B2FEDF122F3DB4100810BD5 /* UIColor+Extension.swift in Sources */,
+				46B9A48222F490FB00D7F423 /* PaginatorManager.swift in Sources */,
 				2B2FEDEA22F168E500810BD5 /* ListItemCell.swift in Sources */,
 				462CE72F22F25CEF00B5411B /* UrlService.swift in Sources */,
 				2B2FEDE822F1687100810BD5 /* ListItemViewModel.swift in Sources */,
