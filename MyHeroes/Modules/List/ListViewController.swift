@@ -27,7 +27,7 @@ final class ListViewController: UIViewController {
         let size: CGSize = .init(width: width, height: height)
         let frame: CGRect = .init(origin: .zero, size: size)
         let footer: LoadingFooter = .init(frame: frame)
-        footer.heightAnchor ||= height
+        (footer.heightAnchor => height)=!
         return footer
     }()
 
@@ -106,7 +106,7 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = collectionView.bounds.width
-        let height: CGFloat = width * 4 / 3
+        let height: CGFloat = width
         return .init(width: width, height: height)
     }
 

@@ -13,10 +13,6 @@ final class ListItemCell: UICollectionViewCell {
         let view: UIView = .init()
         view.clipsToBounds = true
         view.layer.cornerRadius = 20
-        view.layer.shadowColor = UIColor.white.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 1)
-        view.layer.shadowRadius = 1
-        view.layer.shadowOpacity = 0.5
         return view
     }()
 
@@ -29,18 +25,41 @@ final class ListItemCell: UICollectionViewCell {
     private(set) var titleLabel: UILabel = {
         return UILabelBuilder()
             .setSize(20)
-            .setColor(.black)
+            .setColor(.white)
             .setWeight(.medium)
             .setNumberOfLines(0)
             .build()
     }()
 
+    private let gradientLayer: CAGradientLayer = {
+        let layer: CAGradientLayer = .init()
+        layer.colors = [
+            UIColor.black.withAlphaComponent(0).cgColor,
+            UIColor.black.withAlphaComponent(0.4).cgColor,
+            UIColor.black.withAlphaComponent(0.7).cgColor
+        ]
+        layer.locations = [0, 0.7, 1]
+        layer.type = .axial
+        return layer
+    }()
+
+    private var boundsObserver: NSKeyValueObservation!
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViewCode()
+
+        boundsObserver = containerView.observe(\.bounds, changeHandler: { [weak gradientLayer] view, _ in
+            gradientLayer?.frame = view.bounds
+        })
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        itemImageView.image = nil
+    }
 }
 
 extension ListItemCell: ViewCodable {
@@ -51,20 +70,21 @@ extension ListItemCell: ViewCodable {
     func addSubviews() {
         contentView.addSubview(containerView)
         containerView.addSubview(itemImageView)
-        contentView.addSubview(titleLabel)
+        containerView.layer.addSublayer(gradientLayer)
+        containerView.addSubview(titleLabel)
     }
 
     func addConstraints() {
-        containerView.topAnchor ||= contentView.topAnchor ||+ 20
-        containerView.leftAnchor ||= contentView.leftAnchor ||+ 20
-        containerView.rightAnchor ||= contentView.rightAnchor ||+ 20
-        containerView.heightAnchor ||= 100 ||~ 750
+        containerView.autolayout.alignTop(to: contentView, padding: 20)
+        containerView.autolayout.alignLeft(to: contentView, padding: 20)
+        containerView.autolayout.alignRight(to: contentView, padding: 20)
+        containerView.autolayout.setRatio(to: 1)
 
-        itemImageView.autolayout.alignEdges(to: contentView)
+        itemImageView.autolayout.alignEdges(to: containerView)
 
-        titleLabel.leftAnchor ||= contentView.leftAnchor ||+ 20
-        titleLabel.rightAnchor ||= contentView.rightAnchor ||- 20
-        titleLabel.bottomAnchor ||= contentView.bottomAnchor
+        titleLabel.autolayout.alignLeft(to: containerView, padding: 20)
+        titleLabel.autolayout.alignRight(to: containerView, padding: 20)
+        titleLabel.autolayout.alignBottom(to: containerView, padding: 20)
     }
 }
 

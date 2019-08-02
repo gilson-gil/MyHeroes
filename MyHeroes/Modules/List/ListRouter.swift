@@ -24,6 +24,7 @@ final class ListRouter: ListWireframe {
         let view: ListViewController = .init(presenter: presenter)
 
         let navigation = UINavigationController(rootViewController: view)
+        navigation.navigationBar.barTintColor = .marvelRed
 
         view.presenter = presenter
         presenter.view = view
