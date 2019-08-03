@@ -8,38 +8,23 @@
 
 import UIKit
 
-final class LoadingCollectionViewCell: UICollectionViewCell {
-    private(set) var activityIndicator: UIActivityIndicatorView = {
+final class LoadingCollectionViewCell: UICollectionViewCell {}
+
+extension LoadingCollectionViewCell: ConfigurableView {
+    func update(_ viewModel: Any?) {
+        startLoading()
+    }
+}
+
+extension LoadingCollectionViewCell: LoadingStateView {
+    func createLoadingIndicator() -> LoadingIndicatorView {
         return UIActivityIndicatorBuilder()
             .setTintColor(.black)
             .setIsAnimating(true)
             .build()
-    }()
-
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        setupViewCode()
     }
 
-    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-}
-
-extension LoadingCollectionViewCell: ViewCodable {
-    var view: UIView! {
+    var loadingIndicatorSuperview: UIView {
         return contentView
-    }
-
-    func addSubviews() {
-        contentView.addSubview(activityIndicator)
-    }
-
-    func addConstraints() {
-        activityIndicator.autolayout.center(to: contentView)
-    }
-}
-
-extension LoadingCollectionViewCell: ConfigurableView {
-    func update(_ viewModel: Any?) {
-        activityIndicator.startAnimating()
     }
 }

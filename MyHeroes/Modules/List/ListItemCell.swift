@@ -43,7 +43,7 @@ final class ListItemCell: UICollectionViewCell {
         return layer
     }()
 
-    private lazy var downloader: Downloader = .init()
+    private lazy var downloadManager: DownloadManager = .init()
 
     private var boundsObserver: NSKeyValueObservation!
 
@@ -93,7 +93,7 @@ extension ListItemCell: ViewCodable {
 extension ListItemCell: ConfigurableView {
     func update(_ viewModel: ListItemViewModel) {
         itemImageView.startLoading()
-        downloader.fetchImage(for: viewModel.imageUrl) { [weak itemImageView] image in
+        downloadManager.fetchImage(for: viewModel.imageUrl) { [weak itemImageView] image in
             DispatchQueue.main.async {
                 itemImageView?.stopLoading()
                 itemImageView?.image = image

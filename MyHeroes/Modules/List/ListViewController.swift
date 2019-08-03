@@ -140,26 +140,6 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - UITableView DataSource
-extension ListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.configurators.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let configurator = viewModel.configurators[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: configurator.reuseIdentifier, for: indexPath)
-        configurator.update(cell)
-        return cell
-    }
-}
-
-// MARK: - UITableView Delegate
-extension ListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
-}
-
 // MARK: - UIScrollView Delegate
 extension ListViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

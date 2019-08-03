@@ -1,5 +1,5 @@
 //
-//  UIImageView+Downloader.swift
+//  DownloadManager.swift
 //  MyHeroes
 //
 //  Created by Gilson Takaasi Gil on 31/07/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class Downloader {
+final class DownloadManager {
     let remoteRepository: ImageRemoteRepository
     var currentUrlString: String?
 

@@ -16,6 +16,7 @@ protocol LoadingIndicatorView: UIView {
 }
 
 protocol LoadingStateView: UIView {
+    var loadingIndicatorSuperview: UIView { get }
     var loadingIndicatorView: LoadingIndicatorView? { get }
 
     func createLoadingIndicator() -> LoadingIndicatorView
@@ -25,22 +26,24 @@ protocol LoadingStateView: UIView {
 }
 
 extension LoadingStateView {
+    var loadingIndicatorSuperview: UIView {
+        return self
+    }
+
     var loadingIndicatorView: LoadingIndicatorView? {
-        return subviews.compactMap { $0 as? LoadingIndicatorView }.first
+        return loadingIndicatorSuperview.subviews.compactMap { $0 as? LoadingIndicatorView }.first
     }
 
     func createLoadingIndicator() -> LoadingIndicatorView {
-        let indicatorView: UIActivityIndicatorView = .init(style: .white)
-        indicatorView.translatesAutoresizingMaskIntoConstraints = false
-        indicatorView.hidesWhenStopped = true
-        return indicatorView
+        return UIActivityIndicatorBuilder()
+            .build()
     }
 
     func startLoading() {
         if loadingIndicatorView == nil {
             let loadingIndicatorView = createLoadingIndicator()
-            addSubview(loadingIndicatorView)
-            loadingIndicatorView.autolayout.center(to: self)
+            loadingIndicatorSuperview.addSubview(loadingIndicatorView)
+            loadingIndicatorView.autolayout.center(to: loadingIndicatorSuperview)
         }
         loadingIndicatorView?.startAnimating()
     }

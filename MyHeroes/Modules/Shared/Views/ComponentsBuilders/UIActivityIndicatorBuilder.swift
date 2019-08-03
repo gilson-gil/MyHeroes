@@ -24,6 +24,7 @@ final class UIActivityIndicatorBuilder {
 
     func build() -> UIActivityIndicatorView {
         let view = UIActivityIndicatorView(style: .white)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.tintColor = tintColor
         if isAnimating {
             view.startAnimating()
