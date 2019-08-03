@@ -29,6 +29,7 @@
 		2B2FEDEA22F168E500810BD5 /* ListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDE922F168E500810BD5 /* ListItemCell.swift */; };
 		2B2FEDEF22F292F800810BD5 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDEE22F292F800810BD5 /* CacheManager.swift */; };
 		2B2FEDF122F3DB4100810BD5 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDF022F3DB4100810BD5 /* UIColor+Extension.swift */; };
+		2B2FEDF322F5196400810BD5 /* LoadingStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FEDF222F5196400810BD5 /* LoadingStateView.swift */; };
 		462CE71022F2157A00B5411B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462CE70F22F2157A00B5411B /* Image.swift */; };
 		462CE71722F22FD100B5411B /* ListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462CE71622F22FD100B5411B /* ListResponse.swift */; };
 		462CE71922F2339F00B5411B /* HeroesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462CE71822F2339F00B5411B /* HeroesResponse.swift */; };
@@ -89,6 +90,7 @@
 		2B2FEDE922F168E500810BD5 /* ListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCell.swift; sourceTree = "<group>"; };
 		2B2FEDEE22F292F800810BD5 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		2B2FEDF022F3DB4100810BD5 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		2B2FEDF222F5196400810BD5 /* LoadingStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStateView.swift; sourceTree = "<group>"; };
 		462CE70F22F2157A00B5411B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		462CE71622F22FD100B5411B /* ListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListResponse.swift; sourceTree = "<group>"; };
 		462CE71822F2339F00B5411B /* HeroesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesResponse.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				2B2FEDDB22F1548400810BD5 /* ViewCodable.swift */,
 				2B2FEDDF22F15CB300810BD5 /* ConfigurableView.swift */,
 				2B2FEDE122F15CD200810BD5 /* ReusableView.swift */,
+				2B2FEDF222F5196400810BD5 /* LoadingStateView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				2B2FEDCD22F14AD000810BD5 /* ListRouter.swift in Sources */,
 				462CE72622F2414600B5411B /* UIImageViewBuilder.swift in Sources */,
 				46681ADC22F114880080A483 /* Comic.swift in Sources */,
+				2B2FEDF322F5196400810BD5 /* LoadingStateView.swift in Sources */,
 				462CE71922F2339F00B5411B /* HeroesResponse.swift in Sources */,
 				2B2FEDC722F13A1D00810BD5 /* ListViewController.swift in Sources */,
 				46681AD222F106CC0080A483 /* Service.swift in Sources */,

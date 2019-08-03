@@ -25,13 +25,11 @@ final class ListInteractor: ListUseCase {
         }
         isFetching = true
         repository.fetchList(at: data?.results.count ?? 0) { [weak self] result in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                switch result {
+            switch result {
             case .success(let response):
-
-                    response.data.results = (self?.data?.results ?? []) + response.data.results
-                    self?.data = response.data
-                    self?.output?.charactersFetched(response.data)
+                response.data.results = (self?.data?.results ?? []) + response.data.results
+                self?.data = response.data
+                self?.output?.charactersFetched(response.data)
 
             case .failure(let error):
                 switch error {
@@ -42,7 +40,6 @@ final class ListInteractor: ListUseCase {
                 }
             }
             self?.isFetching = false
-                })
         }
     }
 

@@ -28,8 +28,8 @@ final class Downloader {
 
     private func downloadImage(for urlString: String, completion: @escaping (UIImage?) -> Void) {
         remoteRepository.fetchImage(for: urlString) { result in
-            guard self.currentUrlString == urlString else { return }
-            guard case let .success(image) = result else { return }
+            guard self.currentUrlString == urlString else { return completion(nil) }
+            guard case let .success(image) = result else { return completion(nil) }
             if let image = image {
                 CacheManager.shared.cache(image: image, for: urlString)
             }

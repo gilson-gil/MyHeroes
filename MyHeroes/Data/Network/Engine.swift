@@ -76,7 +76,7 @@ final class NetworkEngine<Target: Service> {
     }
 
     private func debug(request: URLRequest, response: URLResponse?, error: Error?) {
-        debugPrint("\n--- [REQUEST] \(request.httpMethod ?? "") - \(request.url?.absoluteString ?? "")")
+        debugPrint("--- [REQUEST] \(request.httpMethod ?? "") - \(request.url?.absoluteString ?? "")")
         debugPrint("--- [HEADER] \(request.allHTTPHeaderFields ?? [:])")
         if let body = request.httpBody, !body.isEmpty {
             debugPrint("--- [BODY] \(String(data: body, encoding: String.Encoding.utf8) ?? "")")

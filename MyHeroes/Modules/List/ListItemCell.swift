@@ -92,8 +92,10 @@ extension ListItemCell: ViewCodable {
 
 extension ListItemCell: ConfigurableView {
     func update(_ viewModel: ListItemViewModel) {
+        itemImageView.startLoading()
         downloader.fetchImage(for: viewModel.imageUrl) { [weak itemImageView] image in
             DispatchQueue.main.async {
+                itemImageView?.stopLoading()
                 itemImageView?.image = image
             }
         }
