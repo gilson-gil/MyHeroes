@@ -281,8 +281,6 @@
 		46681AB022F0F5520080A483 /* MyHeroes */ = {
 			isa = PBXGroup;
 			children = (
-				462CE72722F2429C00B5411B /* AutoLayoutWrapper */,
-				462CE72022F23F6B00B5411B /* Components */,
 				46681AC322F0F5680080A483 /* Application */,
 				2B2FEDC422F139CE00810BD5 /* Modules */,
 				46681AE522F118E80080A483 /* Data */,
@@ -381,6 +379,8 @@
 		46B9A47422F385DF00D7F423 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				462CE72722F2429C00B5411B /* AutoLayoutWrapper */,
+				462CE72022F23F6B00B5411B /* Components */,
 				46B9A47722F3867B00D7F423 /* LoadingFooter.swift */,
 				46B9A47F22F47A9700D7F423 /* LoadingCollectionViewCell.swift */,
 			);
@@ -713,6 +713,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A6WSB9NHED;
 				INFOPLIST_FILE = "$(SRCROOT)/MyHeroes/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -731,6 +732,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A6WSB9NHED;
 				INFOPLIST_FILE = "$(SRCROOT)/MyHeroes/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
