@@ -12,14 +12,17 @@ protocol ViewCodable: class {
     var view: UIView! { get }
 
     func setupViewCode()
+    func setupView()
     func addSubviews()
     func addConstraints()
 }
 
 extension ViewCodable {
     func setupViewCode() {
+        setupView()
         addSubviews()
         addConstraints()
-        view.subviews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
     }
+
+    func setupView() {}
 }

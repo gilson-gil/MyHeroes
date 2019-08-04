@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class UILabelBuilder {
-    var size: CGFloat = 16
-    var weight: UIFont.Weight = .regular
-    var color: UIColor = .black
-    var numberOfLines: Int = 1
+final class UILabelBuilder: Builder {
+    private var size: CGFloat = 16
+    private var weight: UIFont.Weight = .regular
+    private var color: UIColor = .black
+    private var numberOfLines: Int = 1
 
     func setSize(_ size: CGFloat) -> Self {
         self.size = size
@@ -36,7 +36,6 @@ final class UILabelBuilder {
 
     func build() -> UILabel {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: size, weight: weight)
         label.textColor = color
         label.numberOfLines = numberOfLines

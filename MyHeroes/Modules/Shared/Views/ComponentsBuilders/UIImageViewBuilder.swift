@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class UIImageViewBuilder {
+final class UIImageViewBuilder: Builder {
     private var contentMode: UIImageView.ContentMode = .scaleAspectFit
     private var image: UIImage?
 
@@ -24,7 +24,6 @@ final class UIImageViewBuilder {
 
     func build() -> UIImageView {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = contentMode
         imageView.image = image
         return imageView

@@ -9,28 +9,20 @@
 import Foundation
 
 struct CharactersRequest: Encodable {
-    let apiKey: String
     let orderBy: String
     let limit: Int
     let offset: Int
-    let timestamp: String
-    let hash: String
+    static let defaultOrderBy: String = "-modified"
 
     enum CodingKeys: String, CodingKey {
-        case apiKey = "apikey"
-        case orderBy
         case limit
         case offset
-        case timestamp = "ts"
-        case hash
+        case orderBy
     }
 
-    init(offset: Int, limit: Int, timestamp: String, apiKey: String? = nil, orderBy: String? = nil) {
+    init(offset: Int, limit: Int, orderBy: String? = nil) {
         self.offset = offset
         self.limit = limit
-        self.timestamp = timestamp
-        self.apiKey = apiKey ?? Constants.marvelPublicKey.rawValue
-        self.orderBy = orderBy ?? "-modified"
-        self.hash = "\(timestamp)\(Constants.marvelPrivateKey.rawValue)\(self.apiKey)".md5
+        self.orderBy = orderBy ?? Self.defaultOrderBy
     }
 }

@@ -11,13 +11,19 @@ import Foundation
 struct Series: Decodable {
     let identifier: Int
     let title: String
-    let description: String
+    let description: String?
     let resourceURI: String
-    let startYear: Int
-    let endYear: Int
-    let rating: String
     let modified: Date
-    let thumbnail: Image
-    let characters: ListResponse
-    let creators: ListResponse
+    let thumbnail: Image?
+
+    enum CodingKeys: String, CodingKey {
+        case identifier = "id"
+        case title
+        case description
+        case resourceURI
+        case modified
+        case thumbnail
+    }
 }
+
+extension Series: TitleDescriptionThumbnailProtocol {}

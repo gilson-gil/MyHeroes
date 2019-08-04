@@ -9,3 +9,5 @@
 import UIKit
 
 extension UITableViewHeaderFooterView: ReusableView {}
+
+extension UICollectionReusableView: ReusableView {}

@@ -11,14 +11,10 @@ import Foundation
 struct Event: Decodable {
     let identifier: Int
     let title: String
-    let description: String
+    let description: String?
     let resourceURI: String
     let modified: Date
-    let start: Date
-    let end: Date
-    let thumbnail: Image
-    let characters: ListResponse
-    let creators: ListResponse
+    let thumbnail: Image?
 
     enum CodingKeys: String, CodingKey {
         case identifier = "id"
@@ -26,10 +22,8 @@ struct Event: Decodable {
         case description
         case resourceURI
         case modified
-        case start
-        case end
         case thumbnail
-        case characters
-        case creators
     }
 }
+
+extension Event: TitleDescriptionThumbnailProtocol {}

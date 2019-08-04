@@ -10,22 +10,35 @@ import Foundation
 
 enum HeroesService {
     case list(pageSize: Int, offset: Int)
+    case uri(url: String)
 }
 
 extension HeroesService: Service {
     var baseURL: URL? {
-        return URL(string: "https://gateway.marvel.com")
+        switch self {
+        case .uri:
+            return nil
+        default:
+            return URL(string: "https://gateway.marvel.com")
+        }
     }
 
     var path: String {
         switch self {
         case .list:
             return "/v1/public/characters"
+        case .uri:
+            return ""
         }
     }
 
     var absoluteURL: URL? {
-        return baseURL?.appendingPathComponent(path)
+        switch self {
+        case .list:
+            return baseURL?.appendingPathComponent(path)
+        case .uri(let url):
+            return URL(string: url)
+        }
     }
 
     var method: Method {
@@ -33,9 +46,16 @@ extension HeroesService: Service {
     }
 
     var parameters: Parameters? {
+        var parameters: Parameters?
         switch self {
         case .list(let pageSize, let offset):
-            return CharactersRequest(offset: offset, limit: pageSize, timestamp: UUID().uuidString).parameters
+            parameters = CharactersRequest(offset: offset, limit: pageSize).parameters
+        case .uri:
+            parameters = [:]
         }
+        if let authorizationParameters = AuthorizationParameters().parameters {
+            parameters?.merge(authorizationParameters) { lhs, _ in lhs }
+        }
+        return parameters
     }
 }

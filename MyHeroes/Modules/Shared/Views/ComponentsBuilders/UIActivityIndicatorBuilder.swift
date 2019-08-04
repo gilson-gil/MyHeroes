@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class UIActivityIndicatorBuilder {
-    var tintColor: UIColor = .black
-    var isAnimating: Bool = false
+final class UIActivityIndicatorBuilder: Builder {
+    private var tintColor: UIColor = .black
+    private var isAnimating: Bool = false
 
     func setTintColor(_ color: UIColor) -> Self {
         self.tintColor = color
@@ -24,7 +24,6 @@ final class UIActivityIndicatorBuilder {
 
     func build() -> UIActivityIndicatorView {
         let view = UIActivityIndicatorView(style: .white)
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.tintColor = tintColor
         if isAnimating {
             view.startAnimating()

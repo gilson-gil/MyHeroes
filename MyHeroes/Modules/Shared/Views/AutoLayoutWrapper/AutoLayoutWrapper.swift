@@ -15,15 +15,27 @@ precedencegroup ConstraintPriority {
     lowerThan: AdditionPrecedence
 }
 
-infix operator => : Constraint
+infix operator ||= : Constraint
+infix operator ||>= : Constraint
+infix operator ||<= : Constraint
 infix operator + : AdditionPrecedence
 infix operator - : AdditionPrecedence
 infix operator ~ : ConstraintPriority
-postfix operator =!
+postfix operator ||!
 
 @discardableResult
-func =><T> (lhs: NSLayoutAnchor<T>, rhs: NSLayoutAnchor<T>) -> NSLayoutConstraint {
+func ||=<T> (lhs: NSLayoutAnchor<T>, rhs: NSLayoutAnchor<T>) -> NSLayoutConstraint {
     return lhs.constraint(equalTo: rhs, constant: 0)
+}
+
+@discardableResult
+func ||>=<T> (lhs: NSLayoutAnchor<T>, rhs: NSLayoutAnchor<T>) -> NSLayoutConstraint {
+    return lhs.constraint(greaterThanOrEqualTo: rhs)
+}
+
+@discardableResult
+func ||<=<T> (lhs: NSLayoutAnchor<T>, rhs: NSLayoutAnchor<T>) -> NSLayoutConstraint {
+    return lhs.constraint(lessThanOrEqualTo: rhs)
 }
 
 @discardableResult
@@ -39,7 +51,7 @@ func - (lhs: NSLayoutConstraint, rhs: CGFloat) -> NSLayoutConstraint {
 }
 
 @discardableResult
-func => (lhs: NSLayoutDimension, rhs: CGFloat) -> NSLayoutConstraint {
+func ||= (lhs: NSLayoutDimension, rhs: CGFloat) -> NSLayoutConstraint {
     return lhs.constraint(equalToConstant: rhs)
 }
 
@@ -50,7 +62,7 @@ func ~ (lhs: NSLayoutConstraint, rhs: Float) -> NSLayoutConstraint {
 }
 
 @discardableResult
-postfix func =! (constraint: NSLayoutConstraint) -> NSLayoutConstraint {
+postfix func ||! (constraint: NSLayoutConstraint) -> NSLayoutConstraint {
     constraint.isActive = true
     return constraint
 }
@@ -64,12 +76,12 @@ struct AutoLayoutWrapper {
 
     @discardableResult
     func centerHorizontally(to view: UIView) -> NSLayoutConstraint {
-        return (self.view.centerXAnchor => view.centerXAnchor)=!
+        return (self.view.centerXAnchor ||= view.centerXAnchor)||!
     }
 
     @discardableResult
     func centerVertically(to view: UIView) -> NSLayoutConstraint {
-        return (self.view.centerYAnchor => view.centerYAnchor)=!
+        return (self.view.centerYAnchor ||= view.centerYAnchor)||!
     }
 
     @discardableResult
@@ -81,52 +93,52 @@ struct AutoLayoutWrapper {
 
     @discardableResult
     func setTop(to view: UIView, padding: CGFloat = 0, priority: Float = 1000) -> NSLayoutConstraint {
-        return (self.view.topAnchor => view.bottomAnchor + padding ~ priority)=!
+        return (self.view.topAnchor ||= view.bottomAnchor + padding ~ priority)||!
     }
 
     @discardableResult
     func setLeft(to view: UIView, padding: CGFloat = 0, priority: Float = 1000) -> NSLayoutConstraint {
-        return (self.view.leftAnchor => view.rightAnchor + padding ~ priority)=!
+        return (self.view.leftAnchor ||= view.rightAnchor + padding ~ priority)||!
     }
 
     @discardableResult
     func setBottom(to view: UIView, padding: CGFloat = 0, priority: Float = 1000) -> NSLayoutConstraint {
-        return (self.view.bottomAnchor => view.topAnchor + padding ~ priority)=!
+        return (self.view.bottomAnchor ||= view.topAnchor + padding ~ priority)||!
     }
 
     @discardableResult
     func setRight(to view: UIView, padding: CGFloat = 0, priority: Float = 1000) -> NSLayoutConstraint {
-        return (self.view.rightAnchor => view.leftAnchor - padding ~ priority)=!
+        return (self.view.rightAnchor ||= view.leftAnchor - padding ~ priority)||!
     }
 
     @discardableResult
     func alignTop(to view: UIView, padding: CGFloat = 0, priority: Float = 1000) -> NSLayoutConstraint {
-        return (self.view.topAnchor => view.topAnchor + padding ~ priority)=!
+        return (self.view.topAnchor ||= view.topAnchor + padding ~ priority)||!
     }
 
     @discardableResult
     func alignLeft(to view: UIView, padding: CGFloat = 0, priority: Float = 1000) -> NSLayoutConstraint {
-        return (self.view.leftAnchor => view.leftAnchor + padding ~ priority)=!
+        return (self.view.leftAnchor ||= view.leftAnchor + padding ~ priority)||!
     }
 
     @discardableResult
     func alignBottom(to view: UIView, padding: CGFloat = 0, priority: Float = 1000) -> NSLayoutConstraint {
-        return (self.view.bottomAnchor => view.bottomAnchor - padding ~ priority)=!
+        return (self.view.bottomAnchor ||= view.bottomAnchor - padding ~ priority)||!
     }
 
     @discardableResult
     func alignRight(to view: UIView, padding: CGFloat = 0, priority: Float = 1000) -> NSLayoutConstraint {
-        return (self.view.rightAnchor => view.rightAnchor - padding ~ priority)=!
+        return (self.view.rightAnchor ||= view.rightAnchor - padding ~ priority)||!
     }
 
     @discardableResult
     func setHeight(to height: CGFloat, priority: Float = 1000) -> NSLayoutConstraint {
-        return (self.view.heightAnchor => height ~ priority)=!
+        return (self.view.heightAnchor ||= height ~ priority)||!
     }
 
     @discardableResult
     func setWidth(to width: CGFloat, priority: Float = 1000) -> NSLayoutConstraint {
-        return (self.view.widthAnchor => width ~ priority)=!
+        return (self.view.widthAnchor ||= width ~ priority)||!
     }
 
     @discardableResult
@@ -137,21 +149,22 @@ struct AutoLayoutWrapper {
                                    toItem: view,
                                    attribute: .height,
                                    multiplier: ratio,
-                                   constant: 0) ~ priority)=!
+                                   constant: 0) ~ priority)||!
     }
 
     @discardableResult
     func alignEdges(to view: UIView, padding: CGFloat = 0, priority: Float = 1000) -> [NSLayoutConstraint] {
-        let topConstraint = alignTop(to: view, priority: priority)
-        let bottomConstraint = alignBottom(to: view, priority: priority)
-        let leftConstraint = alignLeft(to: view, priority: priority)
-        let rightConstraint = alignRight(to: view, priority: priority)
+        let topConstraint = alignTop(to: view, padding: padding, priority: priority)
+        let bottomConstraint = alignBottom(to: view, padding: padding, priority: priority)
+        let leftConstraint = alignLeft(to: view, padding: padding, priority: priority)
+        let rightConstraint = alignRight(to: view, padding: padding, priority: priority)
         return [topConstraint, bottomConstraint, leftConstraint, rightConstraint]
     }
 }
 
 extension UIView {
     var autolayout: AutoLayoutWrapper {
+        translatesAutoresizingMaskIntoConstraints = false
         return AutoLayoutWrapper(self)
     }
 }

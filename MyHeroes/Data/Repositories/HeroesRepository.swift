@@ -10,8 +10,10 @@ import Foundation
 
 enum HeroesRepositoryError: Error {
     case endReached
+    case unknown
 }
 
 protocol HeroesRepository {
     func fetchList(at page: Int, completion: @escaping (Result<HeroesResponse<Character>, Error>) -> Void)
+    func fetchModel<T: Decodable>(with url: String, completion: @escaping (Result<HeroesResponse<T>, Error>) -> Void)
 }

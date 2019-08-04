@@ -28,4 +28,21 @@ struct HeroesRemoteRepository: HeroesRepository {
             }
         }
     }
+
+    func fetchModel<T: Decodable>(with uri: String, completion: @escaping (Result<HeroesResponse<T>, Error>) -> Void) {
+        let decoder: JSONDecoder = .init()
+        decoder.dateDecodingStrategy = .iso8601
+        let target: HeroesService = .uri(url: uri)
+        engine.request(target: target, decoder: decoder) { (result: Result<HeroesResponse<T>?, NetworkError>) in
+            switch result {
+            case .success(let response):
+                guard let response = response else {
+                    return completion(.failure(HeroesRepositoryError.unknown))
+                }
+                completion(.success(response))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

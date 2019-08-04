@@ -11,27 +11,19 @@ import Foundation
 struct Comic: Decodable {
     let identifier: Int
     let title: String
-    let description: String
+    let description: String?
     let modified: Date
-    let format: String
-    let pageCount: Int
     let resourceURI: String
-    let thumbnail: Image
-    let images: [Image]
-    let creators: ListResponse
-    let characters: ListResponse
+    let thumbnail: Image?
 
     enum CodingKeys: String, CodingKey {
         case identifier = "id"
         case title
         case description
         case modified
-        case format
-        case pageCount
         case resourceURI
         case thumbnail
-        case images
-        case creators
-        case characters
     }
 }
+
+extension Comic: TitleDescriptionThumbnailProtocol {}
