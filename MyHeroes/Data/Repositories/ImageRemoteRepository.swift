@@ -8,6 +8,8 @@
 
 import UIKit
 
+import MyHeroesAPI
+
 struct ImageRemoteRepository: ImageRepository {
     let engine: NetworkEngine<UrlService> = .init()
 

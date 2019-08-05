@@ -36,7 +36,7 @@ extension ListPresenter: ListInteractorOutput {
         view?.showPaginationLoading()
     }
 
-    func charactersFetched(_ dataResponse: DataResponse<Character>) {
+    func charactersFetched(_ dataResponse: DataContainer<Character>) {
         let viewModel: ListViewModel = .init()
         viewModel.characters = dataResponse.results
         viewModel.hasNextPage = dataResponse.results.count == dataResponse.count

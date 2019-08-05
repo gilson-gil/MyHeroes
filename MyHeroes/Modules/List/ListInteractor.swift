@@ -11,7 +11,7 @@ import Foundation
 final class ListInteractor: ListUseCase {
     weak var output: ListInteractorOutput?
     let repository: HeroesRepository
-    var data: DataResponse<Character>?
+    var data: DataContainer<Character>?
     var isFetching: Bool = false
 
     init(repository: HeroesRepository) {

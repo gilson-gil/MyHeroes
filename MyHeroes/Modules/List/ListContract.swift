@@ -35,7 +35,7 @@ protocol ListUseCase: class {
 
 protocol ListInteractorOutput: class {
     func charactersFetchStarted()
-    func charactersFetched(_ dataResponse: DataResponse<Character>)
+    func charactersFetched(_ dataResponse: DataContainer<Character>)
     func charactersFetchFailed(error: Error)
 }
 

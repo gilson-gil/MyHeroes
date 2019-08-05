@@ -13,10 +13,10 @@ final class DetailInteractor: DetailUseCase {
     let character: Character
     let repository: HeroesRepository
 
-    var comics: DataResponse<Comic>?
-    var events: DataResponse<Event>?
-    var stories: DataResponse<Story>?
-    var series: DataResponse<Series>?
+    var comics: DataContainer<Comic>?
+    var events: DataContainer<Event>?
+    var stories: DataContainer<Story>?
+    var series: DataContainer<Series>?
 
     init(character: Character, repository: HeroesRepository) {
         self.character = character
@@ -64,7 +64,7 @@ final class DetailInteractor: DetailUseCase {
         var resultItems: [T] = []
         for item in itemsToFetch {
             dispatchGroup.enter()
-            repository.fetchModel(with: item.resourceURI) { (result: Result<HeroesResponse<T>, Error>) in
+            repository.fetchModel(with: item.resourceURI) { (result: Result<HeroesContainer<T>, Error>) in
                 switch result {
                 case .success(let response):
                     if let obj = response.data.results.first {
