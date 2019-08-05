@@ -9,6 +9,6 @@
 import Foundation
 
 struct ImageTextViewModel {
-    let text: String
-    let imageUrl: String
+    let text: String?
+    let imageUrl: String?
 }

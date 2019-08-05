@@ -56,7 +56,6 @@ final class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.viewWillAppear()
-        setupView()
         updateUI()
     }
 
@@ -89,7 +88,7 @@ final class DetailViewController: UIViewController {
     private func updateBlurredView(from scrollView: UIScrollView) {
         if scrollView.contentOffset.y > -view.safeAreaInsets.top {
             blurredView.isHidden = false
-            navigationItem.title = viewModel.character.name
+            navigationItem.title = viewModel.character?.name
         } else {
             blurredView.isHidden = true
             navigationItem.title = nil
@@ -98,12 +97,15 @@ final class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: DetailView {
-    func showNoContentScreen() {
-
+    func showDetails(_ character: Character) {
+        DispatchQueue.main.async {
+            self.viewModel.character = character
+            self.updateUI()
+        }
     }
 
     func showComics(_ comics: DataState<[DetailItemViewModel]>) {
-        viewModel.comics = comics.data ?? []
+        viewModel.comics = comics
         DispatchQueue.main.async {
             self.registerConfigurators()
             self.collectionView.reloadSections(.init(integer: DetailSectionType.comics.rawValue))
@@ -111,7 +113,7 @@ extension DetailViewController: DetailView {
     }
 
     func showEvents(_ events: DataState<[DetailItemViewModel]>) {
-        viewModel.events = events.data ?? []
+        viewModel.events = events
         DispatchQueue.main.async {
             self.registerConfigurators()
             self.collectionView.reloadSections(.init(integer: DetailSectionType.events.rawValue))
@@ -119,7 +121,7 @@ extension DetailViewController: DetailView {
     }
 
     func showStories(_ stories: DataState<[DetailItemViewModel]>) {
-        viewModel.stories = stories.data ?? []
+        viewModel.stories = stories
         DispatchQueue.main.async {
             self.registerConfigurators()
             self.collectionView.reloadSections(.init(integer: DetailSectionType.stories.rawValue))
@@ -127,10 +129,18 @@ extension DetailViewController: DetailView {
     }
 
     func showSeries(_ series: DataState<[DetailItemViewModel]>) {
-        viewModel.series = series.data ?? []
+        viewModel.series = series
         DispatchQueue.main.async {
             self.registerConfigurators()
             self.collectionView.reloadSections(.init(integer: DetailSectionType.series.rawValue))
+        }
+    }
+
+    func showError(_ error: Error) {
+        DispatchQueue.main.async { [weak navigationController] in
+            self.alert(title: nil, message: error.localizedDescription, cancelTitle: "OK", cancelAction: {
+                navigationController?.popViewController(animated: true)
+            })
         }
     }
 }
@@ -138,8 +148,8 @@ extension DetailViewController: DetailView {
 extension DetailViewController: ViewCodable {
     func setupView() {
         view.backgroundColor = .black
-        configureTableViewInsets()
         registerConfigurators()
+        configureTableViewInsets()
         blurredViewHeightConstraint?.constant = view.safeAreaInsets.top
     }
 
@@ -148,6 +158,7 @@ extension DetailViewController: ViewCodable {
         var inset = collectionView.contentInset
         inset.top = imageTextView.bounds.height - view.safeAreaInsets.top
         collectionView.contentInset = inset
+        collectionView.setContentOffset(.init(x: 0, y: -imageTextView.bounds.height), animated: false)
     }
 
     func addSubviews() {

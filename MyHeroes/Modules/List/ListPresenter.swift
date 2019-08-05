@@ -18,8 +18,9 @@ final class ListPresenter: ListPresentation {
         self.router = router
     }
 
-    func viewWillAppear() {
-        interactor.fetchCharacters()
+    func requestFirstPage() {
+        view?.showLoading()
+        interactor.resetFetch()
     }
 
     func requestNextPage() {
@@ -45,7 +46,7 @@ extension ListPresenter: ListInteractorOutput {
     }
 
     func charactersFetchFailed(error: Error) {
-        print(error)
+        view?.showError(error)
         view?.hidePaginationLoading()
     }
 }

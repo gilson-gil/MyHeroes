@@ -18,4 +18,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         RootRouter().presentListModule(in: window!)
         return true
     }
+
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return false }
+        guard let deeplink = Deeplink(queryItem: components.queryItems?.first) else { return false }
+        let viewController = DetailRouter.startModule(with: deeplink.resourceURI)
+        let rootViewController = window?.rootViewController
+        rootViewController?.children.last?.navigationItem.backBarButtonItem = .init(title: nil,
+                                                                                    style: .plain,
+                                                                                    target: nil,
+                                                                                    action: nil)
+        rootViewController?.show(viewController, sender: nil)
+        return true
+    }
 }

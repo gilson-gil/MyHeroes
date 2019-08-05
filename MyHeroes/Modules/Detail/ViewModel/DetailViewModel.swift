@@ -29,34 +29,34 @@ enum DetailSectionType: Int, CaseIterable {
 }
 
 final class DetailViewModel {
-    var character: Character
-    var comics: [DetailItemViewModel] = [] {
+    var character: Character?
+    var comics: DataState<[DetailItemViewModel]> = .empty {
         didSet {
-            configurators[DetailSectionType.comics.rawValue] = comics.map(createConfigurators)
+            update(index: DetailSectionType.comics.rawValue, dataState: comics)
         }
     }
-    var events: [DetailItemViewModel] = [] {
+    var events: DataState<[DetailItemViewModel]> = .empty {
         didSet {
-            configurators[DetailSectionType.events.rawValue] = events.map(createConfigurators)
+            update(index: DetailSectionType.events.rawValue, dataState: events)
         }
     }
-    var stories: [DetailItemViewModel] = [] {
+    var stories: DataState<[DetailItemViewModel]> = .empty {
         didSet {
-            configurators[DetailSectionType.stories.rawValue] = stories.map(createConfigurators)
+            update(index: DetailSectionType.stories.rawValue, dataState: stories)
         }
     }
-    var series: [DetailItemViewModel] = [] {
+    var series: DataState<[DetailItemViewModel]> = .empty {
         didSet {
-            configurators[DetailSectionType.series.rawValue] = series.map(createConfigurators)
+            update(index: DetailSectionType.series.rawValue, dataState: series)
         }
     }
     var configurators: [DetailSectionType.RawValue: [ViewConfiguratorType]]
     var headerConfigurators: [DetailSectionType.RawValue: ViewConfiguratorType?]
     var imageTextViewModel: ImageTextViewModel {
-        return .init(text: character.name, imageUrl: character.thumbnail.fullUrl)
+        return .init(text: character?.name, imageUrl: character?.thumbnail.fullUrl)
     }
 
-    init(character: Character) {
+    init(character: Character?) {
         self.character = character
         self.configurators = DetailSectionType.allCases.reduce([:]) { result, new in
             var dict = result
@@ -72,5 +72,22 @@ final class DetailViewModel {
 
     private func createConfigurators(from viewModel: DetailItemViewModel) -> ViewConfiguratorType {
         return ViewConfigurator<DetailItemCell>(viewModel: viewModel)
+    }
+
+    private func update(index: Int, dataState: DataState<[DetailItemViewModel]>) {
+        switch dataState {
+        case .empty:
+            configurators[index] = [
+                ViewConfigurator<DetailItemCell>(viewModel: DetailItemViewModel(imageUrl: nil,
+                                                                                title: "Não há items para mostrar",
+                                                                                description: nil))
+            ]
+        case .loading:
+            configurators[index] = [
+                ViewConfigurator<LoadingCollectionViewCell>(viewModel: nil)
+            ]
+        case .loaded(let data):
+            configurators[index] = data.compactMap(createConfigurators)
+        }
     }
 }

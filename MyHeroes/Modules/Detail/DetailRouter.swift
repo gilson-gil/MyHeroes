@@ -26,4 +26,20 @@ final class DetailRouter: DetailWireframe {
 
         return view
     }
+
+    static func startModule(with characterURI: String) -> UIViewController {
+        let router: DetailRouter = .init()
+        let repository: HeroesRemoteRepository = .init()
+        let interactor: DetailInteractor = .init(characterURI: characterURI, repository: repository)
+        let presenter: DetailPresenter = .init(interactor: interactor, router: router)
+        let viewModel: DetailViewModel = .init(character: nil)
+        let view: DetailViewController = .init(presenter: presenter, viewModel: viewModel)
+
+        view.presenter = presenter
+        presenter.view = view
+        interactor.output = presenter
+        router.viewController = view
+
+        return view
+    }
 }

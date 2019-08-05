@@ -12,9 +12,11 @@ protocol ListView: class {
     var presenter: ListPresentation { get set }
 
     func showNoContentScreen()
+    func showLoading()
     func showListCharacters(_ viewModel: ListViewModel)
     func showPaginationLoading()
     func hidePaginationLoading()
+    func showError(_ error: Error)
 }
 
 protocol ListPresentation: class {
@@ -22,7 +24,7 @@ protocol ListPresentation: class {
     var interactor: ListUseCase { get set }
     var router: ListWireframe { get set }
 
-    func viewWillAppear()
+    func requestFirstPage()
     func requestNextPage()
     func didSelectCharacter(_ character: Character)
 }
@@ -30,6 +32,7 @@ protocol ListPresentation: class {
 protocol ListUseCase: class {
     var output: ListInteractorOutput? { get set }
 
+    func resetFetch()
     func fetchCharacters()
 }
 

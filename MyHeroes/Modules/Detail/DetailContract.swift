@@ -11,10 +11,12 @@ import UIKit
 protocol DetailView: class {
     var presenter: DetailPresentation { get set }
 
+    func showDetails(_ character: Character)
     func showComics(_ comics: DataState<[DetailItemViewModel]>)
     func showEvents(_ events: DataState<[DetailItemViewModel]>)
     func showStories(_ stories: DataState<[DetailItemViewModel]>)
     func showSeries(_ series: DataState<[DetailItemViewModel]>)
+    func showError(_ error: Error)
 }
 
 protocol DetailPresentation: class {
@@ -36,6 +38,7 @@ protocol DetailInteractorOutput: class {
     func startedFetchingEvents()
     func startedFetchingStories()
     func startedFetchingSeries()
+    func characterDetailsFetched(_ result: Result<Character, Error>)
     func characterComicsFetched(_ comics: Result<[Comic], Error>)
     func characterEventsFetched(_ events: Result<[Event], Error>)
     func characterStoriesFetched(_ stories: Result<[Story], Error>)
@@ -47,4 +50,5 @@ protocol DetailWireframe: class {
     var viewController: UIViewController? { get set }
 
     static func startModule(for character: Character) -> UIViewController
+    static func startModule(with characterURI: String) -> UIViewController
 }

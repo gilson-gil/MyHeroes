@@ -22,6 +22,22 @@ final class ListViewController: UIViewController {
         return collectionView
     }()
 
+    private(set) lazy var refreshControl: UIRefreshControl = {
+        let refreshControl: UIRefreshControl = .init()
+        refreshControl.tintColor = .white
+        refreshControl.addTarget(self, action: #selector(refreshChanged(sender:)), for: .valueChanged)
+        return refreshControl
+    }()
+
+    private(set) lazy var emptyLabel: UILabel = {
+        return UILabelBuilder()
+            .setColor(.white)
+            .setSize(20)
+            .setWeight(.semibold)
+            .setNumberOfLines(0)
+            .build()
+    }()
+
     init(presenter: ListPresentation) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -34,7 +50,7 @@ final class ListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.viewWillAppear()
+        presenter.requestFirstPage()
         updateUI()
     }
 
@@ -43,27 +59,57 @@ final class ListViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
     }
+
+    @objc
+    func refreshChanged(sender: UIRefreshControl) {
+        presenter.requestFirstPage()
+    }
 }
 
 extension ListViewController: ListView {
     func showNoContentScreen() {
+        DispatchQueue.main.async {
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
+            self.collectionView.backgroundView = self.emptyLabel
+        }
+    }
 
+    func showError(_ error: Error) {
+        DispatchQueue.main.async { [weak self] in
+            self?.alert(title: nil, message: error.localizedDescription, cancelTitle: "OK", cancelAction: {
+                self?.showNoContentScreen()
+            })
+        }
+    }
+
+    func showLoading() {
+        collectionView.contentOffset = CGPoint(x: 0, y: -refreshControl.bounds.height)
+        refreshControl.beginRefreshing()
     }
 
     func showListCharacters(_ viewModel: ListViewModel) {
+        let previousCount = self.viewModel.configurators.count
+        let newCount = viewModel.configurators.count
+        let range = newCount <= previousCount ? 0..<newCount : previousCount..<newCount
+        let newIndexPaths = range.map { IndexPath(item: $0, section: 0) }
+        self.viewModel = viewModel
         DispatchQueue.main.async {
-            self.collectionView.performBatchUpdates({
-                let previousCount = self.viewModel.configurators.count
-                let newCount = viewModel.configurators.count
-                let range = previousCount..<newCount
-                let newIndexPaths = range.map { IndexPath(item: $0, section: 0) }
-                self.viewModel = viewModel
-                self.viewModel.configurators.forEach { $0.register(self.collectionView) }
-                self.collectionView.insertItems(at: newIndexPaths)
-                if self.collectionView.numberOfItems(inSection: 1) > 0 {
-                    self.collectionView.deleteItems(at: [IndexPath(item: 0, section: 1)])
-                }
-            }, completion: nil)
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
+            self.viewModel.configurators.forEach { $0.register(self.collectionView) }
+            if range.lowerBound == 0 {
+                self.collectionView.reloadData()
+            } else {
+                self.collectionView.performBatchUpdates({
+                    self.collectionView.insertItems(at: newIndexPaths)
+                    if self.collectionView.numberOfItems(inSection: 1) > 0 {
+                        self.collectionView.deleteItems(at: [IndexPath(item: 0, section: 1)])
+                    }
+                }, completion: nil)
+            }
         }
     }
 
@@ -85,6 +131,7 @@ extension ListViewController: ListView {
 extension ListViewController: ViewCodable {
     func addSubviews() {
         view.addSubview(collectionView)
+        collectionView.addSubview(refreshControl)
         navigationItem.titleView = UIImageViewBuilder()
             .setContentMode(.scaleAspectFit)
             .setImage(#imageLiteral(resourceName: "img_logo"))

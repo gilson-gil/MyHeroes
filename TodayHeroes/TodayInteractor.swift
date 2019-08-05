@@ -1,15 +1,15 @@
 //
-//  ListInteractor.swift
-//  MyHeroes
+//  TodayInteractor.swift
+//  TodayHeroes
 //
-//  Created by Gilson Gil on 30/07/19.
+//  Created by Gilson Gil on 04/08/19.
 //  Copyright © 2019 Gilson Gil. All rights reserved.
 //
 
 import Foundation
 
-final class ListInteractor: ListUseCase {
-    weak var output: ListInteractorOutput?
+final class TodayInteractor: TodayUseCase {
+    weak var output: TodayInteractorOutput?
     let repository: HeroesRepository
     var data: DataContainer<Character>?
     var isFetching: Bool = false
@@ -18,14 +18,8 @@ final class ListInteractor: ListUseCase {
         self.repository = repository
     }
 
-    func resetFetch() {
-        isFetching = false
-        data = nil
-        fetchCharacters()
-    }
-
     func fetchCharacters() {
-        guard !isFetching && !hasReachedEnd() else { return }
+        guard !isFetching else { return }
         if let count = data?.results.count, count > 0 {
             output?.charactersFetchStarted()
         }
@@ -47,10 +41,5 @@ final class ListInteractor: ListUseCase {
             }
             self?.isFetching = false
         }
-    }
-
-    func hasReachedEnd() -> Bool {
-        guard let data = data else { return false }
-        return data.results.count == data.total
     }
 }

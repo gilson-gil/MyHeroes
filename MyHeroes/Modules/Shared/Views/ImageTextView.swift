@@ -95,11 +95,13 @@ extension ImageTextView: ImageTextViewInterface {
 // MARK: - ConfigurableView
 extension ImageTextView: ConfigurableView {
     func update(_ viewModel: ImageTextViewModel) {
-        imageView.startLoading()
-        downloadManager.fetchImage(for: viewModel.imageUrl) { [weak imageView] image in
-            DispatchQueue.main.async {
-                imageView?.stopLoading()
-                imageView?.image = image
+        if let imageUrl = viewModel.imageUrl {
+            imageView.startLoading()
+            downloadManager.fetchImage(for: imageUrl) { [weak imageView] image in
+                DispatchQueue.main.async {
+                    imageView?.stopLoading()
+                    imageView?.image = image
+                }
             }
         }
         titleLabel.text = viewModel.text

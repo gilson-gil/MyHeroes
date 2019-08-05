@@ -40,6 +40,15 @@ extension DetailPresenter: DetailInteractorOutput {
         view?.showSeries(.loading)
     }
 
+    func characterDetailsFetched(_ result: Result<Character, Error>) {
+        switch result {
+        case .success(let character):
+            view?.showDetails(character)
+        case .failure(let error):
+            view?.showError(error)
+        }
+    }
+
     func characterComicsFetched(_ comics: Result<[Comic], Error>) {
         switch comics {
         case .success(let comics):
@@ -105,7 +114,7 @@ extension DetailPresenter: DetailInteractorOutput {
     }
 
     func charactersDetailsFetchFailed(error: Error) {
-        print(error)
+        view?.showError(error)
     }
 
     private func createViewModel(from model: TitleDescriptionThumbnailProtocol) -> DetailItemViewModel {
