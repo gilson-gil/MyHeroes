@@ -70,4 +70,44 @@ struct HeroesMockRepository: HeroesRepository {
         let character = json.data.results[0]
         return character
     }
+
+    func getMockComic() -> Comic {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let file = Bundle(for: ListViewModelTests.self).url(forResource: "ValidComicMock", withExtension: "json")!
+        let data = try! Data(contentsOf: file)
+        let json = try! decoder.decode(HeroesContainer<Comic>.self, from: data)
+        let character = json.data.results[0]
+        return character
+    }
+
+    func getMockEvent() -> Event {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let file = Bundle(for: ListViewModelTests.self).url(forResource: "ValidEventMock", withExtension: "json")!
+        let data = try! Data(contentsOf: file)
+        let json = try! decoder.decode(HeroesContainer<Event>.self, from: data)
+        let character = json.data.results[0]
+        return character
+    }
+
+    func getMockStory() -> Story {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let file = Bundle(for: ListViewModelTests.self).url(forResource: "ValidStoryMock", withExtension: "json")!
+        let data = try! Data(contentsOf: file)
+        let json = try! decoder.decode(HeroesContainer<Story>.self, from: data)
+        let character = json.data.results[0]
+        return character
+    }
+
+    func getMockSeries() -> Series {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let file = Bundle(for: ListViewModelTests.self).url(forResource: "ValidSeriesMock", withExtension: "json")!
+        let data = try! Data(contentsOf: file)
+        let json = try! decoder.decode(HeroesContainer<Series>.self, from: data)
+        let character = json.data.results[0]
+        return character
+    }
 }
