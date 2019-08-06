@@ -13,6 +13,8 @@ final class UILabelBuilder: Builder {
     private var weight: UIFont.Weight = .regular
     private var color: UIColor = .black
     private var numberOfLines: Int = 1
+    private var text: String = ""
+    private var textAlignment: NSTextAlignment = .left
 
     func setSize(_ size: CGFloat) -> Self {
         self.size = size
@@ -34,11 +36,23 @@ final class UILabelBuilder: Builder {
         return self
     }
 
+    func setText(_ text: String) -> Self {
+        self.text = text
+        return self
+    }
+
+    func setTextAlignment(_ textAlignment: NSTextAlignment) -> Self {
+        self.textAlignment = textAlignment
+        return self
+    }
+
     func build() -> UILabel {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: size, weight: weight)
         label.textColor = color
         label.numberOfLines = numberOfLines
+        label.text = text
+        label.textAlignment = textAlignment
         return label
     }
 }

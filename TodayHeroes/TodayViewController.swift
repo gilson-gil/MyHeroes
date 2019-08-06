@@ -11,7 +11,6 @@ import NotificationCenter
 import MyHeroesAPI
 
 @objc(TodayViewController)
-
 final class TodayViewController: UIViewController, NCWidgetProviding {
     var router: TodayWireframe?
     var presenter: TodayPresentation?

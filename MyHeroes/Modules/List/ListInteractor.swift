@@ -49,6 +49,6 @@ final class ListInteractor: ListUseCase {
 
     func hasReachedEnd() -> Bool {
         guard let data = data else { return false }
-        return data.results.count == data.total
+        return data.offset + data.count >= data.total
     }
 }

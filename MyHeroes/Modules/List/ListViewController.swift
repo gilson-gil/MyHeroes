@@ -35,6 +35,8 @@ final class ListViewController: UIViewController {
             .setSize(20)
             .setWeight(.semibold)
             .setNumberOfLines(0)
+            .setText("Não há conteúdo disponível, tente novamente mais tarde")
+            .setTextAlignment(.center)
             .build()
     }()
 

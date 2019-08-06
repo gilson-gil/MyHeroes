@@ -1,0 +1,15 @@
+{
+    "code": 200,
+    "status": "Ok",
+    "copyright": "© 2019 MARVEL",
+    "attributionText": "Data provided by Marvel. © 2019 MARVEL",
+    "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2019 MARVEL</a>",
+    "etag": "17661e6a8e129908a0aa176c8dfecb4b137f6640",
+    "data": {
+        "offset": 1500,
+        "limit": 20,
+        "total": 1492,
+        "count": 0,
+        "results": []
+    }
+}
