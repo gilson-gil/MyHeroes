@@ -16,7 +16,7 @@ final class TodayViewController: UIViewController, NCWidgetProviding {
     var router: TodayWireframe?
     var presenter: TodayPresentation?
     var viewModel: TodayViewModel = .init()
-    var cellHeight: CGFloat { return 60 }
+    var cellHeight: CGFloat { return 110 }
     var cellSeparator: CGFloat { return 8 }
 
     private var widgetCompletionHandler: ((NCUpdateResult) -> Void)?
@@ -50,24 +50,26 @@ final class TodayViewController: UIViewController, NCWidgetProviding {
             refreshContentSize()
         case .expanded:
             var size = maxSize
-            size.height = 20
-                + cellHeight * CGFloat(viewModel.configurators.count)
+            size.height = cellHeight * CGFloat(viewModel.configurators.count)
                 + cellSeparator * CGFloat(viewModel.configurators.count - 1)
             preferredContentSize = size
         @unknown default:
             fatalError()
         }
+        collectionView.reloadData()
     }
 
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         refreshContentSize()
         presenter?.didRequestUpdate()
         widgetCompletionHandler = completionHandler
+        collectionView.startLoading()
     }
 
     func refreshContentSize() {
         let width: CGFloat = 0
         let height: CGFloat = cellHeight * CGFloat(viewModel.configurators.count)
+            + cellSeparator * CGFloat(viewModel.configurators.count - 1)
         preferredContentSize = .init(width: width, height: height)
         collectionViewHeightConstraint?.constant = height
     }
@@ -89,6 +91,7 @@ extension TodayViewController: TodayView {
         DispatchQueue.main.async {
             self.widgetCompletionHandler?(.noData)
             self.widgetCompletionHandler = nil
+            self.collectionView.stopLoading()
         }
     }
 
@@ -97,21 +100,32 @@ extension TodayViewController: TodayView {
             self.viewModel = viewModel
             self.refreshContentSize()
             self.collectionView.register(configurators: viewModel.configurators)
+            self.collectionView.register(configurators: viewModel.compactConfigurators)
             self.collectionView.reloadData()
             self.widgetCompletionHandler?(.newData)
             self.widgetCompletionHandler = nil
+            self.collectionView.stopLoading()
         }
     }
 }
 
 extension TodayViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.configurators.count
+        if extensionContext?.widgetActiveDisplayMode == .some(.compact) {
+            return viewModel.compactConfigurators.count
+        } else {
+            return viewModel.configurators.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let configurator = viewModel.configurators[indexPath.item]
+        let configurator: ViewConfiguratorType
+        if extensionContext?.widgetActiveDisplayMode == .some(.compact) {
+            configurator = viewModel.compactConfigurators[indexPath.item]
+        } else {
+            configurator = viewModel.configurators[indexPath.item]
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: configurator.reuseIdentifier, for: indexPath)
         configurator.update(cell)
         return cell
@@ -122,7 +136,12 @@ extension TodayViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = collectionView.bounds.width
+        let width: CGFloat
+        if extensionContext?.widgetActiveDisplayMode == .some(.compact) {
+            width = cellHeight
+        } else {
+            width = collectionView.bounds.width
+        }
         let height: CGFloat = cellHeight
         return .init(width: width, height: height)
     }

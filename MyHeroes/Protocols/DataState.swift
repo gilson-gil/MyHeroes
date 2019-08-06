@@ -21,3 +21,14 @@ enum DataState<T> {
         }
     }
 }
+
+extension DataState: Equatable {
+    static func == (lhs: DataState<T>, rhs: DataState<T>) -> Bool {
+        switch (lhs, rhs) {
+        case (.empty, .empty), (.loading, .loading), (.loaded, .loaded):
+            return true
+        default:
+            return false
+        }
+    }
+}

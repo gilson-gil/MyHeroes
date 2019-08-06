@@ -10,6 +10,7 @@ import UIKit
 
 final class ImageTextViewBuilder: Builder {
     private var cornerRadius: CGFloat = 20
+    private var textSize: CGFloat = 20
     private var contentMode: UIImageView.ContentMode = .scaleAspectFit
 
     func setCornerRadius(_ cornerRadius: CGFloat) -> Self {
@@ -22,11 +23,17 @@ final class ImageTextViewBuilder: Builder {
         return self
     }
 
+    func setTextSize(_ size: CGFloat) -> Self {
+        self.textSize = size
+        return self
+    }
+
     func build() -> ImageTextView {
         let imageTextView: ImageTextView = .init()
         imageTextView.layer.masksToBounds = true
         imageTextView.layer.cornerRadius = cornerRadius
         imageTextView.imageView.contentMode = contentMode
+        imageTextView.titleLabel.font = imageTextView.titleLabel.font.withSize(textSize)
         return imageTextView
     }
 }

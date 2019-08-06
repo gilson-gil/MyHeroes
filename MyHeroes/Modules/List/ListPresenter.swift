@@ -19,7 +19,6 @@ final class ListPresenter: ListPresentation {
     }
 
     func requestFirstPage() {
-        view?.showLoading()
         interactor.resetFetch()
     }
 

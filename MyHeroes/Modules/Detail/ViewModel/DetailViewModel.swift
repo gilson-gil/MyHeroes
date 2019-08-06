@@ -55,6 +55,9 @@ final class DetailViewModel {
     var imageTextViewModel: ImageTextViewModel {
         return .init(text: character?.name, imageUrl: character?.thumbnail.fullUrl)
     }
+    var hasLoadedAllItems: Bool {
+        return comics != .loading && events != .loading && stories != .loading && series != .loading
+    }
 
     init(character: Character?) {
         self.character = character

@@ -48,16 +48,21 @@ final class ListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.layoutIfNeeded()
+        updateUI()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
         presenter.requestFirstPage()
-        updateUI()
     }
 
     private func updateUI() {
         collectionView.contentInset = view.safeAreaInsets
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
     }
 
     @objc
@@ -85,6 +90,7 @@ extension ListViewController: ListView {
     }
 
     func showLoading() {
+        guard !refreshControl.isRefreshing else { return }
         collectionView.contentOffset = CGPoint(x: 0, y: -refreshControl.bounds.height)
         refreshControl.beginRefreshing()
     }

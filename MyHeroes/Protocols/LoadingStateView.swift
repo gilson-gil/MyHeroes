@@ -56,3 +56,5 @@ extension LoadingStateView {
 extension UIActivityIndicatorView: LoadingIndicatorView {}
 
 extension UIImageView: LoadingStateView {}
+
+extension UICollectionView: LoadingStateView {}

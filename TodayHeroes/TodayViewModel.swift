@@ -15,7 +15,12 @@ final class TodayViewModel {
                 ViewConfigurator<TodayItemCell>(viewModel: TodayItemViewModel(title: $0.name,
                                                                               imageUrl: $0.thumbnail.fullUrl))
             }
+            compactConfigurators = characters.map {
+                ViewConfigurator<TodayItemCompactCell>(viewModel: TodayItemViewModel(title: $0.name,
+                                                                                     imageUrl: $0.thumbnail.fullUrl))
+            }
         }
     }
+    var compactConfigurators: [ViewConfiguratorType] = []
     var configurators: [ViewConfiguratorType] = []
 }

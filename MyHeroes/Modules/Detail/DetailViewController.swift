@@ -108,7 +108,9 @@ extension DetailViewController: DetailView {
         viewModel.comics = comics
         DispatchQueue.main.async {
             self.registerConfigurators()
-            self.collectionView.reloadSections(.init(integer: DetailSectionType.comics.rawValue))
+            if self.viewModel.hasLoadedAllItems {
+                self.collectionView.reloadData()
+            }
         }
     }
 
@@ -116,7 +118,9 @@ extension DetailViewController: DetailView {
         viewModel.events = events
         DispatchQueue.main.async {
             self.registerConfigurators()
-            self.collectionView.reloadSections(.init(integer: DetailSectionType.events.rawValue))
+            if self.viewModel.hasLoadedAllItems {
+                self.collectionView.reloadData()
+            }
         }
     }
 
@@ -124,7 +128,9 @@ extension DetailViewController: DetailView {
         viewModel.stories = stories
         DispatchQueue.main.async {
             self.registerConfigurators()
-            self.collectionView.reloadSections(.init(integer: DetailSectionType.stories.rawValue))
+            if self.viewModel.hasLoadedAllItems {
+                self.collectionView.reloadData()
+            }
         }
     }
 
@@ -132,7 +138,9 @@ extension DetailViewController: DetailView {
         viewModel.series = series
         DispatchQueue.main.async {
             self.registerConfigurators()
-            self.collectionView.reloadSections(.init(integer: DetailSectionType.series.rawValue))
+            if self.viewModel.hasLoadedAllItems {
+                self.collectionView.reloadData()
+            }
         }
     }
 

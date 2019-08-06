@@ -26,9 +26,7 @@ final class ListInteractor: ListUseCase {
 
     func fetchCharacters() {
         guard !isFetching && !hasReachedEnd() else { return }
-        if let count = data?.results.count, count > 0 {
-            output?.charactersFetchStarted()
-        }
+        output?.charactersFetchStarted()
         isFetching = true
         repository.fetchList(at: data?.results.count ?? 0) { [weak self] result in
             switch result {
