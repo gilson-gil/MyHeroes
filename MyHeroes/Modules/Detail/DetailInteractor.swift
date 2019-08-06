@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum DetailInteractorError: Error {
+    case emptyResult
+}
+
 final class DetailInteractor: DetailUseCase {
     weak var output: DetailInteractorOutput?
     let characterURI: String
@@ -57,7 +61,9 @@ final class DetailInteractor: DetailUseCase {
     private func fetchComics() {
         guard let output = output else { return }
         guard let character = character else { return }
-        guard character.comics.available > 0 else { return output.characterComicsFetched(.failure(NSError())) }
+        guard character.comics.available > 0 else {
+            return output.characterComicsFetched(.failure(DetailInteractorError.emptyResult))
+        }
         output.startedFetchingComics()
         fetch(items: character.comics.items) { [weak self] (result: Result<[Comic], Error>) in
             if case let .success(comics) = result {
@@ -70,7 +76,9 @@ final class DetailInteractor: DetailUseCase {
     private func fetchEvents() {
         guard let output = output else { return }
         guard let character = character else { return }
-        guard character.events.available > 0 else { return output.characterEventsFetched(.failure(NSError())) }
+        guard character.events.available > 0 else {
+            return output.characterEventsFetched(.failure(DetailInteractorError.emptyResult))
+        }
         output.startedFetchingEvents()
         fetch(items: character.events.items) { [weak self] (result: Result<[Event], Error>) in
             if case let .success(events) = result {
@@ -83,7 +91,9 @@ final class DetailInteractor: DetailUseCase {
     private func fetchStories() {
         guard let output = output else { return }
         guard let character = character else { return }
-        guard character.stories.available > 0 else { return output.characterStoriesFetched(.failure(NSError())) }
+        guard character.stories.available > 0 else {
+            return output.characterStoriesFetched(.failure(DetailInteractorError.emptyResult))
+        }
         output.startedFetchingStories()
         fetch(items: character.stories.items) { [weak self] (result: Result<[Story], Error>) in
             if case let .success(stories) = result {
@@ -96,7 +106,9 @@ final class DetailInteractor: DetailUseCase {
     private func fetchSeries() {
         guard let output = output else { return }
         guard let character = character else { return }
-        guard character.series.available > 0 else { return output.characterSeriesFetched(.failure(NSError())) }
+        guard character.series.available > 0 else {
+            return output.characterSeriesFetched(.failure(DetailInteractorError.emptyResult))
+        }
         output.startedFetchingSeries()
         fetch(items: character.series.items) { [weak self] (result: Result<[Series], Error>) in
             if case let .success(series) = result {
@@ -113,7 +125,7 @@ final class DetailInteractor: DetailUseCase {
                 if let character = response.data.results.first {
                     completion(.success(character))
                 } else {
-                    completion(.failure(NSError()))
+                    completion(.failure(DetailInteractorError.emptyResult))
                 }
             case .failure(let error):
                 completion(.failure(error))

@@ -60,7 +60,7 @@ final class ListViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
-        presenter.requestFirstPage()
+        presenter.requestFirstPage(force: false)
     }
 
     private func updateUI() {
@@ -69,7 +69,7 @@ final class ListViewController: UIViewController {
 
     @objc
     func refreshChanged(sender: UIRefreshControl) {
-        presenter.requestFirstPage()
+        presenter.requestFirstPage(force: true)
     }
 }
 
@@ -199,6 +199,7 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard indexPath.item < viewModel.characters.count else { return }
         presenter.didSelectCharacter(viewModel.characters[indexPath.item])
     }
 }

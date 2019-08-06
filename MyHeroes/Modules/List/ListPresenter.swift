@@ -18,8 +18,8 @@ final class ListPresenter: ListPresentation {
         self.router = router
     }
 
-    func requestFirstPage() {
-        interactor.resetFetch()
+    func requestFirstPage(force: Bool) {
+        interactor.resetFetch(force: force)
     }
 
     func requestNextPage() {

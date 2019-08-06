@@ -18,7 +18,8 @@ final class ListInteractor: ListUseCase {
         self.repository = repository
     }
 
-    func resetFetch() {
+    func resetFetch(force: Bool) {
+        guard data == nil || force else { return }
         isFetching = false
         data = nil
         fetchCharacters()

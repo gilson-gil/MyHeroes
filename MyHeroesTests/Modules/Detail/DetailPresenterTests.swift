@@ -44,7 +44,7 @@ final class DetailViewMock: DetailView {
 final class DetailPresenterTests: QuickSpec {
     override func spec() {
         describe("given a presenter") {
-            context("when it calls view will appear") {
+            context("when it gets data from interactor") {
                 let router: DetailRouter = .init()
                 let repository: HeroesMockRepository = HeroesMockRepository(type: .regular)
                 let character: Character = repository.getMockCharacter()
@@ -63,7 +63,7 @@ final class DetailPresenterTests: QuickSpec {
                 presenter.characterEventsFetched(.success([event]))
                 presenter.characterStoriesFetched(.success([story]))
                 presenter.characterSeriesFetched(.success([series]))
-                it("should") {
+                it("should update view") {
                     expect(view.showDetailsCalled).toEventually(beTrue())
                     expect(view.showComicsCalled).toEventually(beTrue())
                     expect(view.showEventsCalled).toEventually(beTrue())

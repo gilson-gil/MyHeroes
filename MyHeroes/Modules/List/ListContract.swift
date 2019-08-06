@@ -24,7 +24,7 @@ protocol ListPresentation: class {
     var interactor: ListUseCase { get set }
     var router: ListWireframe { get set }
 
-    func requestFirstPage()
+    func requestFirstPage(force: Bool)
     func requestNextPage()
     func didSelectCharacter(_ character: Character)
 }
@@ -32,7 +32,7 @@ protocol ListPresentation: class {
 protocol ListUseCase: class {
     var output: ListInteractorOutput? { get set }
 
-    func resetFetch()
+    func resetFetch(force: Bool)
     func fetchCharacters()
 }
 
