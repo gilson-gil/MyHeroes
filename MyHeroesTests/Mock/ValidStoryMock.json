@@ -1,0 +1,93 @@
+{
+    "code": 200,
+    "status": "Ok",
+    "copyright": "© 2019 MARVEL",
+    "attributionText": "Data provided by Marvel. © 2019 MARVEL",
+    "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2019 MARVEL</a>",
+    "etag": "f9ea6d933c9b4a794b78742795298ed6d5545ffd",
+    "data": {
+        "offset": 0,
+        "limit": 20,
+        "total": 1,
+        "count": 1,
+        "results": [
+            {
+                "id": 112733,
+                "title": "cover from The Amazing Spider-Man (2014) #13",
+                "description": "",
+                "resourceURI": "http://gateway.marvel.com/v1/public/stories/112733",
+                "type": "cover",
+                "modified": "2018-12-21T14:38:49-0500",
+                "thumbnail": null,
+                "creators": {
+                    "available": 1,
+                    "collectionURI": "http://gateway.marvel.com/v1/public/stories/112733/creators",
+                    "items": [
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/6170",
+                            "name": "Olivier Coipel",
+                            "role": "penciller (cover)"
+                        }
+                    ],
+                    "returned": 1
+                },
+                "characters": {
+                    "available": 3,
+                    "collectionURI": "http://gateway.marvel.com/v1/public/stories/112733/characters",
+                    "items": [
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017603",
+                            "name": "Spider-Gwen (Spider-Gwen)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009610",
+                            "name": "Spider-Man"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1016181",
+                            "name": "Spider-Man (Miles Morales)"
+                        }
+                    ],
+                    "returned": 3
+                },
+                "series": {
+                    "available": 1,
+                    "collectionURI": "http://gateway.marvel.com/v1/public/stories/112733/series",
+                    "items": [
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/series/17285",
+                            "name": "The Amazing Spider-Man (2014 - 2015)"
+                        }
+                    ],
+                    "returned": 1
+                },
+                "comics": {
+                    "available": 1,
+                    "collectionURI": "http://gateway.marvel.com/v1/public/stories/112733/comics",
+                    "items": [
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/50350",
+                            "name": "The Amazing Spider-Man (2014) #13"
+                        }
+                    ],
+                    "returned": 1
+                },
+                "events": {
+                    "available": 1,
+                    "collectionURI": "http://gateway.marvel.com/v1/public/stories/112733/events",
+                    "items": [
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/events/321",
+                            "name": "Spider-Verse"
+                        }
+                    ],
+                    "returned": 1
+                },
+                "originalIssue": {
+                    "resourceURI": "http://gateway.marvel.com/v1/public/comics/50350",
+                    "name": "The Amazing Spider-Man (2014) #13"
+                }
+            }
+        ]
+    }
+}

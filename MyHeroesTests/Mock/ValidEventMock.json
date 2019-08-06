@@ -1,0 +1,390 @@
+{
+    "code": 200,
+    "status": "Ok",
+    "copyright": "© 2019 MARVEL",
+    "attributionText": "Data provided by Marvel. © 2019 MARVEL",
+    "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2019 MARVEL</a>",
+    "etag": "36733e5c3f5ba2a9690e58d667860c5a026ce30c",
+    "data": {
+        "offset": 0,
+        "limit": 20,
+        "total": 1,
+        "count": 1,
+        "results": [
+            {
+                "id": 332,
+                "title": "Dead No More: The Clone Conspiracy",
+                "description": "The Jackal has returned and initiated the Clone Conspiracy! Spider-Man and his allies must contend with friends and enemies alike back from the dead in a limited series by Dan Slott and Jim Cheung that spills into all of the Spidey titles!",
+                "resourceURI": "http://gateway.marvel.com/v1/public/events/332",
+                "urls": [
+                    {
+                        "type": "detail",
+                        "url": "http://marvel.com/comics/events/332/dead_no_more_the_clone_conspiracy?utm_campaign=apiRef&utm_source=75060678488a84875f90bc59ae9828d6"
+                    }
+                ],
+                "modified": "2016-09-30T12:05:37-0400",
+                "start": "2016-10-12 01:00:00",
+                "end": "2017-02-01 01:00:00",
+                "thumbnail": {
+                    "path": "http://i.annihil.us/u/prod/marvel/i/mg/a/00/57e94a282c8de",
+                    "extension": "jpg"
+                },
+                "creators": {
+                    "available": 16,
+                    "collectionURI": "http://gateway.marvel.com/v1/public/events/332/creators",
+                    "items": [
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/12472",
+                            "name": "Jamal Campbell",
+                            "role": "penciller"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/1141",
+                            "name": "Giuseppe Camuncoli",
+                            "role": "penciller"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/357",
+                            "name": "Jim Cheung",
+                            "role": "penciller"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/641",
+                            "name": "Javier Saltares",
+                            "role": "penciller"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/12863",
+                            "name": "Irene Strychalski",
+                            "role": "penciller"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/12778",
+                            "name": "Helen Chen",
+                            "role": "penciller (cover)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/8522",
+                            "name": "Gabriele Dell'otto",
+                            "role": "penciller (cover)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/735",
+                            "name": "Travel Foreman",
+                            "role": "penciller (cover)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/12698",
+                            "name": "Yasmine Putri",
+                            "role": "penciller (cover)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/63",
+                            "name": "Alex Ross",
+                            "role": "penciller (cover)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/11765",
+                            "name": "Christos Gage",
+                            "role": "writer"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/9432",
+                            "name": "Sean Ryan",
+                            "role": "writer"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/12983",
+                            "name": "Dan Slott",
+                            "role": "writer"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/12444",
+                            "name": "Robbie Thompson",
+                            "role": "writer"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/12457",
+                            "name": "Edward Devin Lewis",
+                            "role": "editor"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/creators/4300",
+                            "name": "Nick Lowe",
+                            "role": "editor"
+                        }
+                    ],
+                    "returned": 16
+                },
+                "characters": {
+                    "available": 10,
+                    "collectionURI": "http://gateway.marvel.com/v1/public/events/332/characters",
+                    "items": [
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009276",
+                            "name": "Doctor Octopus"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009619",
+                            "name": "Gwen Stacy"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009372",
+                            "name": "J. Jonah Jameson"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011288",
+                            "name": "Jackal"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009404",
+                            "name": "Lizard"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009507",
+                            "name": "Prowler"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011426",
+                            "name": "Scarlet Spider (Kaine)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017603",
+                            "name": "Spider-Gwen (Spider-Gwen)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009610",
+                            "name": "Spider-Man"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/characters/1010794",
+                            "name": "Spider-Woman (Mattie Franklin)"
+                        }
+                    ],
+                    "returned": 10
+                },
+                "stories": {
+                    "available": 38,
+                    "collectionURI": "http://gateway.marvel.com/v1/public/events/332/stories",
+                    "items": [
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/121679",
+                            "name": "cover from The Amazing Spider-Man (2015) #20",
+                            "type": "cover"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/121680",
+                            "name": "story from The Amazing Spider-Man (2015) #20",
+                            "type": "interiorStory"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/121681",
+                            "name": "cover from The Amazing Spider-Man (2015) #21",
+                            "type": "cover"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/121682",
+                            "name": "story from The Amazing Spider-Man (2015) #21",
+                            "type": "interiorStory"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/121683",
+                            "name": "cover from The Amazing Spider-Man (2015) #22",
+                            "type": "cover"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/121684",
+                            "name": "story from The Amazing Spider-Man (2015) #22",
+                            "type": "interiorStory"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/121685",
+                            "name": "cover from The Amazing Spider-Man (2015) #23",
+                            "type": "cover"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/121686",
+                            "name": "story from The Amazing Spider-Man (2015) #23",
+                            "type": "interiorStory"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/121687",
+                            "name": "cover from The Amazing Spider-Man (2015) #24",
+                            "type": "cover"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/121688",
+                            "name": "story from The Amazing Spider-Man (2015) #24",
+                            "type": "interiorStory"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/122349",
+                            "name": "cover from Silk (2015) #14",
+                            "type": "cover"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/122350",
+                            "name": "story from Silk (2015) #14",
+                            "type": "interiorStory"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/122351",
+                            "name": "cover from Silk (2015) #15",
+                            "type": "cover"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/122352",
+                            "name": "story from Silk (2015) #15",
+                            "type": "interiorStory"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/122353",
+                            "name": "cover from Silk (2015) #16",
+                            "type": "cover"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/122354",
+                            "name": "story from Silk (2015) #16",
+                            "type": "interiorStory"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/132553",
+                            "name": "cover from Silk (2015) #17",
+                            "type": "cover"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/132554",
+                            "name": "story from Silk (2015) #17",
+                            "type": "interiorStory"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/133008",
+                            "name": "cover from Prowler (2016) #1",
+                            "type": "cover"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/stories/133009",
+                            "name": "story from Prowler (2016) #1",
+                            "type": "interiorStory"
+                        }
+                    ],
+                    "returned": 20
+                },
+                "comics": {
+                    "available": 19,
+                    "collectionURI": "http://gateway.marvel.com/v1/public/events/332/comics",
+                    "items": [
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/55318",
+                            "name": "The Amazing Spider-Man (2017) #20"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/55319",
+                            "name": "The Amazing Spider-Man (2017) #21"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/55320",
+                            "name": "The Amazing Spider-Man (2017) #22"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/55321",
+                            "name": "The Amazing Spider-Man (2017) #23"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/55322",
+                            "name": "The Amazing Spider-Man (2017) #24"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/61302",
+                            "name": "Prowler (2016) #1"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/61304",
+                            "name": "Prowler (2016) #2"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/61306",
+                            "name": "Prowler (2016) #3"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/61307",
+                            "name": "Prowler (2016) #4"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/61308",
+                            "name": "Prowler (2016) #5"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/55653",
+                            "name": "Silk (2015) #14"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/55654",
+                            "name": "Silk (2015) #15"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/55655",
+                            "name": "Silk (2015) #16"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/61050",
+                            "name": "Silk (2015) #17"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/61713",
+                            "name": "The Clone Conspiracy (2016) #1"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/61714",
+                            "name": "The Clone Conspiracy (2016) #2"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/61715",
+                            "name": "The Clone Conspiracy (2016) #3"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/61716",
+                            "name": "The Clone Conspiracy (2016) #4"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/61717",
+                            "name": "The Clone Conspiracy (2016) #5"
+                        }
+                    ],
+                    "returned": 19
+                },
+                "series": {
+                    "available": 4,
+                    "collectionURI": "http://gateway.marvel.com/v1/public/events/332/series",
+                    "items": [
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/series/22535",
+                            "name": "Prowler (2016 - Present)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/series/20499",
+                            "name": "Silk (2015 - Present)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/series/20432",
+                            "name": "The Amazing Spider-Man (2017 - 2018)"
+                        },
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/series/22654",
+                            "name": "The Clone Conspiracy (2016 - Present)"
+                        }
+                    ],
+                    "returned": 4
+                },
+                "next": {
+                    "resourceURI": "http://gateway.marvel.com/v1/public/events/336",
+                    "name": "Secret Empire"
+                },
+                "previous": {
+                    "resourceURI": "http://gateway.marvel.com/v1/public/events/323",
+                    "name": "Secret Wars (2015)"
+                }
+            }
+        ]
+    }
+}

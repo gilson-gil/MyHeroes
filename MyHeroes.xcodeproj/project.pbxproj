@@ -84,6 +84,11 @@
 		2B64D90022F942CA00A08248 /* UIActivityIndicatorBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B64D8FF22F942CA00A08248 /* UIActivityIndicatorBuilderTests.swift */; };
 		2B64D90222F9433300A08248 /* UIImageViewBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B64D90122F9433300A08248 /* UIImageViewBuilderTests.swift */; };
 		2B64D90422F943D900A08248 /* UILabelBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B64D90322F943D900A08248 /* UILabelBuilderTests.swift */; };
+		2B64D90722F9A1F700A08248 /* DetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B64D90622F9A1F700A08248 /* DetailInteractorTests.swift */; };
+		2B64D90922F9A5EC00A08248 /* ValidEventMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B64D90822F9A5EC00A08248 /* ValidEventMock.json */; };
+		2B64D90B22F9A5FC00A08248 /* ValidStoryMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B64D90A22F9A5FC00A08248 /* ValidStoryMock.json */; };
+		2B64D90D22F9A62A00A08248 /* ValidSeriesMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B64D90C22F9A62A00A08248 /* ValidSeriesMock.json */; };
+		2B64D90F22F9ADC600A08248 /* ValidCharacterMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B64D90E22F9ADC600A08248 /* ValidCharacterMock.json */; };
 		2B793A5922F78A8E0005E194 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B793A5822F78A8E0005E194 /* NotificationCenter.framework */; };
 		2B793A5C22F78A8E0005E194 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B793A5B22F78A8E0005E194 /* TodayViewController.swift */; };
 		2B793A6322F78A8E0005E194 /* TodayHeroes.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2B793A5722F78A8E0005E194 /* TodayHeroes.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -215,6 +220,11 @@
 		2B64D8FF22F942CA00A08248 /* UIActivityIndicatorBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIActivityIndicatorBuilderTests.swift; sourceTree = "<group>"; };
 		2B64D90122F9433300A08248 /* UIImageViewBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewBuilderTests.swift; sourceTree = "<group>"; };
 		2B64D90322F943D900A08248 /* UILabelBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelBuilderTests.swift; sourceTree = "<group>"; };
+		2B64D90622F9A1F700A08248 /* DetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractorTests.swift; sourceTree = "<group>"; };
+		2B64D90822F9A5EC00A08248 /* ValidEventMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ValidEventMock.json; sourceTree = "<group>"; };
+		2B64D90A22F9A5FC00A08248 /* ValidStoryMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ValidStoryMock.json; sourceTree = "<group>"; };
+		2B64D90C22F9A62A00A08248 /* ValidSeriesMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ValidSeriesMock.json; sourceTree = "<group>"; };
+		2B64D90E22F9ADC600A08248 /* ValidCharacterMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ValidCharacterMock.json; sourceTree = "<group>"; };
 		2B793A5722F78A8E0005E194 /* TodayHeroes.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayHeroes.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B793A5822F78A8E0005E194 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		2B793A5B22F78A8E0005E194 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -404,6 +414,7 @@
 		2B64D8E822F92CF400A08248 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2B64D90522F9A1E600A08248 /* Detail */,
 				2B64D8E922F92CFF00A08248 /* List */,
 			);
 			path = Modules;
@@ -425,7 +436,11 @@
 				2B64D8EF22F9310700A08248 /* ValidCharactersListMock.json */,
 				2B64D8F622F9368900A08248 /* ValidLastPageCharactersListMock.json */,
 				2B64D8F822F9385300A08248 /* ErrorCharactersListMock.json */,
+				2B64D90E22F9ADC600A08248 /* ValidCharacterMock.json */,
 				2B64D8F422F9325500A08248 /* ValidComicMock.json */,
+				2B64D90822F9A5EC00A08248 /* ValidEventMock.json */,
+				2B64D90A22F9A5FC00A08248 /* ValidStoryMock.json */,
+				2B64D90C22F9A62A00A08248 /* ValidSeriesMock.json */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -447,6 +462,14 @@
 				2B64D90322F943D900A08248 /* UILabelBuilderTests.swift */,
 			);
 			path = ComponentBuilders;
+			sourceTree = "<group>";
+		};
+		2B64D90522F9A1E600A08248 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				2B64D90622F9A1F700A08248 /* DetailInteractorTests.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		2B793A5A22F78A8E0005E194 /* TodayHeroes */ = {
@@ -791,7 +814,11 @@
 			files = (
 				2B64D8F522F9325500A08248 /* ValidComicMock.json in Resources */,
 				2B64D8F022F9310700A08248 /* ValidCharactersListMock.json in Resources */,
+				2B64D90B22F9A5FC00A08248 /* ValidStoryMock.json in Resources */,
+				2B64D90922F9A5EC00A08248 /* ValidEventMock.json in Resources */,
 				2B64D8F722F9368900A08248 /* ValidLastPageCharactersListMock.json in Resources */,
+				2B64D90D22F9A62A00A08248 /* ValidSeriesMock.json in Resources */,
+				2B64D90F22F9ADC600A08248 /* ValidCharacterMock.json in Resources */,
 				2B64D8F922F9385300A08248 /* ErrorCharactersListMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -948,6 +975,7 @@
 				2B64D8FB22F93B3800A08248 /* ListViewControllerTests.swift in Sources */,
 				2B64D90022F942CA00A08248 /* UIActivityIndicatorBuilderTests.swift in Sources */,
 				2B64D8EB22F92D0C00A08248 /* ListViewModelTests.swift in Sources */,
+				2B64D90722F9A1F700A08248 /* DetailInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
